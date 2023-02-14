@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Chandanaish"
         tools:targetApi="31">
         <activity
-            android:name=".web"
+            android:name=".Web"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

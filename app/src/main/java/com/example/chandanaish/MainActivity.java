@@ -2,6 +2,7 @@ package com.example.chandanaish;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,8 +19,9 @@ public class MainActivity extends AppCompatActivity {
         temparature.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                web.url="https://justweather.org/Bangladesh/Chittagong/Chittagong/Chandanaish/Hourly/";
-
+                Web.url="https://justweather.org/Bangladesh/Chittagong/Chittagong/Chandanaish/Hourly/";
+                Intent intent= new Intent(getApplicationContext(), Web.class);
+                startActivity(intent);
 
             }
         });

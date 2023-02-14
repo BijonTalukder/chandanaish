@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class web extends AppCompatActivity {
+public class Web extends AppCompatActivity {
     public  static String url;
     WebView webView;
 

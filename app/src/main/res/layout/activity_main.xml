@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,35 +21,162 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="hjsdfgsdg"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <ImageView
                 android:id="@+id/temparature"
                 android:layout_width="40dp"
-
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_baseline_cloud_24"
+                android:layout_height="40dp"
 
                 android:layout_gravity="center_horizontal|end"
-                android:layout_height="40dp"/>
+                android:layout_marginRight="5dp"
+
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_baseline_cloud_24" />
+
 
         </androidx.appcompat.widget.Toolbar>
 
 
     </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="29dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:background="#DC3535"
+            android:layout_gravity="center"
+            android:padding="5sp"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                android:text="News"
+                android:textSize="15sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5sp"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:fadingEdge="horizontal"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                android:text="lorem is s Simple application that shows how to use marquee, with a long text"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="#D3F3F3F3"
+android:weightSum="12"        >
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:elevation="5dp"
+
+            android:layout_weight="3"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationView"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    app:lottie_url="https://assets8.lottiefiles.com/private_files/lf30_iywakhjv.json"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="নিউজ"
+                    android:textSize="20dp"
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:elevation="5dp"
+
+            android:layout_weight="3"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:src="@drawable/edu"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="শিক্ষা প্রতিষ্টান"
+                    android:textSize="14dp"
+                    android:padding="3dp"
+
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:elevation="5dp"
+            android:layout_weight="3"
+            android:layout_margin="5dp"
+            android:layout_height="fill_parent">
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:elevation="5dp"
+            android:layout_weight="3"
+            android:layout_margin="5dp"
+            android:layout_height="fill_parent">
+
+        </androidx.cardview.widget.CardView>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
