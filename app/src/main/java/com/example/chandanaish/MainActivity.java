@@ -40,17 +40,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 //slider image list
-        imageList.add(new SlideModel(R.drawable.ic_launcher_background,null));
-        imageList.add(new SlideModel(R.drawable.ic_launcher_background,null));
-        imageList.add(new SlideModel(R.drawable.ic_launcher_background,null));
+        imageList.add(new SlideModel(R.drawable.download,null));
+        imageList.add(new SlideModel(R.drawable.download,null));
+        imageList.add(new SlideModel(R.drawable.download,null));
 
         imageSlider.setImageList(imageList);
 
         //top bar date and time
 //        String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
 //        dateTime.setText(currentDateTimeString);
-meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home_24));
-        meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_baseline_home_24));
+        meowBottomNavigation.show(1,true);
+        meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home_24));
+        meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_baseline_add_circle_24));
 
         temparature.setOnClickListener(new View.OnClickListener() {
             @Override
