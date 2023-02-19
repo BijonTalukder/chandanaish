@@ -116,6 +116,36 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        doctorlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ItemList.role="doctor";
+                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+                intent.putExtra("key","doctor");
+                startActivity(intent);
+
+            }
+        });
+       bloodlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ItemList.role="blood";
+                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+                intent.putExtra("key","blood");
+                startActivity(intent);
+
+            }
+        });
+        hospitallist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ItemList.role="hospital";
+                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+                intent.putExtra("key","hospital");
+                startActivity(intent);
+
+            }
+        });
 
     }
 }

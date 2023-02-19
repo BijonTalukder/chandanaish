@@ -102,10 +102,26 @@ public class ItemList extends AppCompatActivity {
                     listView.setAdapter(adapter1);
                     hashMap=new HashMap<>();
                     hashMap.put("name","চন্দনাইশ ফায়ার সার্ভিস");
-                    hashMap.put("number","+8801968889965");
+                    hashMap.put("number","01968889965");
                     arrayList.add(hashMap);
 
                     break;
+                case "hospital":
+                    Toast.makeText(ItemList.this, userName,
+                            Toast.LENGTH_LONG).show();
+                    MyAdapter adapter2 = new MyAdapter();
+                    listView.setAdapter(adapter2);
+
+                    listView.setAdapter(adapter2);
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","BGC Trust Medical College");
+                    hashMap.put("number","01832166950");
+                    arrayList.add(hashMap);
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","Chandanaish Upazila Health Comple");
+                    hashMap.put("number"," 01730-324446");
+                    arrayList.add(hashMap);
+
 
 
                 default:
@@ -176,17 +192,41 @@ public class ItemList extends AppCompatActivity {
                         public void onClick(View view) {
 //                            String.format("tel: %s",fireservicenumbervalue);
                             Intent dialIntent = new Intent(Intent.ACTION_DIAL);
-                            dialIntent.setData(Uri.parse("tel:"+fireservicenamevalue));
+                            dialIntent.setData(Uri.parse(String.format("tel:%s", fireservicenumbervalue)));
                             Toast.makeText(ItemList.this,"call",Toast.LENGTH_SHORT).show();
-                            if (dialIntent.resolveActivity(getPackageManager()) != null) {
-                                startActivity(dialIntent);
-                            }
+                            startActivity(dialIntent );
+//                            if (dialIntent.resolveActivity(getPackageManager()) != null) {
+//                                startActivity(dialIntent);
+//                            }
 //                            else {
 //                                Log.e(TAG, "Can't resolve app for ACTION_DIAL Intent.");
 //                            }
                         }
                     });
                  return view2;
+                case "hospital":
+                    LayoutInflater layoutInflater2 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View view3 = layoutInflater2.inflate(R.layout.demo_list_view_call,viewGroup,false);
+                    HashMap<String,String> hashMap2 = arrayList.get(i);
+                    TextView hospitalservicename = view3.findViewById(R.id.textitemdemo1);
+                    TextView hospitalservicenumber = view3.findViewById(R.id.number);
+                    String hospitalervicenamevalue = hashMap2.get("name");
+                    String hospitalservicenumbervalue = hashMap2.get("number");
+                    hospitalservicename.setText(hospitalervicenamevalue);
+                    hospitalservicenumber.setText(hospitalservicenumbervalue);
+                    LinearLayout linearLayout1 = view3.findViewById(R.id.demolistwithcall);
+                    linearLayout1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent dialIntent = new Intent(Intent.ACTION_DIAL);
+                            dialIntent.setData(Uri.parse(String.format("tel:%s", hospitalservicenumbervalue)));
+                            Toast.makeText(ItemList.this,"call",Toast.LENGTH_SHORT).show();
+                            startActivity(dialIntent );
+                        }
+                    });
+                    return view3;
+
+
 
                 default:
                     return null;
