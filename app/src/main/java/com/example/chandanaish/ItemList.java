@@ -453,6 +453,17 @@ public class ItemList extends AppCompatActivity {
                         }
                     });
                     return view5;
+                case "postcode":
+                    LayoutInflater layoutInflater5 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View view6 = layoutInflater5.inflate(R.layout.demo_list_view,viewGroup,false);
+                    HashMap<String,String> hashMap5 = arrayList.get(i);
+                    TextView postname = view6.findViewById(R.id.textitemdemo);
+                    TextView code = view6.findViewById(R.id.eiin);
+                    String postnamevalue = hashMap5.get("name");
+                    String postcodevalue = hashMap5.get("code");
+                    postname.setText(postnamevalue);
+                    code.setText("CODE : "+postcodevalue);
+                    return  view6;
 
 
                 default:

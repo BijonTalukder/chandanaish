@@ -8,6 +8,7 @@
     android:background="#D3F3F3F3"
     tools:context=".MainActivity">
 
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_alignParentTop="true"
         android:id="@+id/lay1"
@@ -100,7 +101,7 @@
                 android:marqueeRepeatLimit="marquee_forever"
                 android:scrollHorizontally="true"
 
-                android:text="lorem is s Simple application that shows how to use marquee, with a long text"/>
+                android:text="সম্মানিত এলাকাবাসী আমরা আপনাদের সব সেবা একটি এপসের মাধ্যমে প্রদান করার চেষ্টা করতেছি। আমাদের টিম ইনফরমেশন কালেক্ট করার চেষ্টা করতেছে।আপনারা যদি চান আপনার এলাকার সঠিক ইনফরমেশন দিয়ে আমাদের সাথে যুক্ত থাকতে তাহলে প্লাস বাটনে ক্লিক করুন । "/>
         </LinearLayout>
 
 
@@ -116,6 +117,8 @@
             android:id="@+id/newsCard"
             android:layout_width="0dp"
             android:elevation="5dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
 
             android:layout_weight="3"
             android:layout_margin="5dp"
@@ -152,7 +155,8 @@
             android:id="@+id/education"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -190,7 +194,8 @@
             android:id="@+id/fireservice"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -239,6 +244,8 @@
                 <com.airbnb.lottie.LottieAnimationView
 
                     android:layout_gravity="center_horizontal"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:lottie_url="https://assets3.lottiefiles.com/packages/lf20_FNYNayM037.json"
@@ -298,7 +305,8 @@
             android:id="@+id/blood"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -334,7 +342,8 @@
             android:id="@+id/hospital"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -372,7 +381,8 @@
             android:id="@+id/police"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -410,7 +420,8 @@
             android:id="@+id/daigonestic"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -459,7 +470,8 @@
             android:id="@+id/dorshoniyostan"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -497,7 +509,8 @@
             android:layout_width="0dp"
             android:id="@+id/emargencynumber"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -535,7 +548,8 @@
             android:id="@+id/result"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -571,7 +585,8 @@
             android:id="@+id/songgoton"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -615,7 +630,8 @@
             android:layout_width="0dp"
             android:id="@+id/eseba"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -652,7 +668,8 @@
             android:id="@+id/postcode"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -685,7 +702,8 @@
             android:id="@+id/bikhatomanush"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -721,7 +739,8 @@
             android:id="@+id/garibara"
             android:layout_width="0dp"
             android:elevation="5dp"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_weight="3"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
@@ -766,7 +785,8 @@
             android:id="@+id/itihash"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_margin="5dp"
             android:layout_weight="3"
             android:elevation="5dp">
