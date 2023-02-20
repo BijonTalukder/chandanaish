@@ -146,6 +146,36 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        policelist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ItemList.role="police";
+                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+                intent.putExtra("key","police");
+                startActivity(intent);
+
+            }
+        });
+        emagencynumberlst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 ItemList.role="emargency";
+                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+                intent.putExtra("key","emargency");
+                startActivity(intent);
+
+            }
+        });
+        postcodelist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ItemList.role="postcode";
+                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+                intent.putExtra("key","postcode");
+                startActivity(intent);
+
+            }
+        });
 
     }
 }

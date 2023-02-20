@@ -112,7 +112,7 @@ public class ItemList extends AppCompatActivity {
                     MyAdapter adapter2 = new MyAdapter();
                     listView.setAdapter(adapter2);
 
-                    listView.setAdapter(adapter2);
+
                     hashMap=new HashMap<>();
                     hashMap.put("name","BGC Trust Medical College");
                     hashMap.put("number","01832166950");
@@ -121,6 +121,193 @@ public class ItemList extends AppCompatActivity {
                     hashMap.put("name","Chandanaish Upazila Health Comple");
                     hashMap.put("number"," 01730-324446");
                     arrayList.add(hashMap);
+                    break;
+                case "police":
+                    Toast.makeText(ItemList.this, userName,Toast.LENGTH_LONG).show();
+                    MyAdapter adapter3 = new MyAdapter();
+                    listView.setAdapter(adapter3);
+                    hashMap= new HashMap<>();
+                    hashMap.put("name","মো: ফয়েজ উদ্দিন");
+                    hashMap.put("number","০১৬৩১৭৪০৫২১");
+                    hashMap.put("status"," কনাস্টেবল");
+                    arrayList.add(hashMap);
+                    hashMap= new HashMap<>();
+                    hashMap.put("name","আফছানা আক্তার");
+                    hashMap.put("number","০১৭১৫৭২৭২৪৩");
+                    hashMap.put("status","নারী কনাস্টেবল/২৭৬৬");
+                    arrayList.add(hashMap);
+                    hashMap= new HashMap<>();
+                    hashMap.put("name","\tমোঃ আনোয়ার হোসেন");
+                    hashMap.put("number","০১৮৮৭৭৬৪২৫০");
+                    hashMap.put("status","কনাস্টেবল");
+                    arrayList.add(hashMap);
+                    hashMap= new HashMap<>();
+                    hashMap.put("name","অংচি প্রু মারমা");
+                    hashMap.put("number","০১৭৩৬৯৮৮৭১৬");
+                    hashMap.put("status","কনাস্টেবল");
+                    arrayList.add(hashMap);
+                    hashMap= new HashMap<>();
+                    hashMap.put("name","\tম্রা থোয়াই");
+                    hashMap.put("number","০১৮৪০১৬৬১৩৯");
+                    hashMap.put("status","কনাস্টেবল");
+                    arrayList.add(hashMap);
+                    hashMap= new HashMap<>();
+                    hashMap.put("name","ছোটন চন্দ্র দাস");
+                    hashMap.put("number","০১৮৭৬৭১২৯১০");
+                    hashMap.put("status","এএসআই(নিঃ)");
+                    arrayList.add(hashMap);
+
+                    break;
+                case "emargency":
+                    Toast.makeText(ItemList.this, userName,Toast.LENGTH_LONG).show();
+                    MyAdapter adapter4 = new MyAdapter();
+                    listView.setAdapter(adapter4);
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","ন্যাশনাল ইমার্জেন্সি সার্ভিস ");
+                    hashMap.put("number","999");
+                    arrayList.add(hashMap);
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","সরকারী তথ্য সেন্টার");
+                    hashMap.put("number","333");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","কৃষি কল সেন্টার ");
+                    hashMap.put("number","16123");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","\tজাতীয় মহিলা সংস্থার তথ্য আপাকে জিজ্ঞাসা");
+                    hashMap.put("number","10922");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","প্রবাসীদের-জন্য-কল-সেন্টার");
+                    hashMap.put("number","+8809610102030");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","নারী ও শিশু নির্যাতন প্রতিরোধ ");
+                    hashMap.put("number","109");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","দুদক");
+                    hashMap.put("number","106");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","দুর্যোগের আগাম বার্তা ");
+                    hashMap.put("number","1090");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","ভুমি সেবা ");
+                    hashMap.put("number","16122");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","ফায়ার সার্ভিস");
+                    hashMap.put("number","16163");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","মাদক দ্রব্য নিয়ন্ত্রন");
+                    hashMap.put("number","01908888888");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","ন্যাশনাল ইমার্জেন্সি সার্ভিস ");
+                    hashMap.put("number","999");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name"," অ্যাম্বুলেন্স ");
+                    hashMap.put("number","16263");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","\tবিটিসিএল কল সেন্টার");
+                    hashMap.put("number","16402");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","কৃষি কল সেন্টার ");
+                    hashMap.put("number","16123");
+                    arrayList.add(hashMap);
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","সুখী পরিবার কল সেন্টার ");
+                    hashMap.put("number","16767");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","সরকারি আইনগত সহায়তা");
+                    hashMap.put("number","16430");
+                    arrayList.add(hashMap);
+
+                 break;
+                case "postcode":
+                    Toast.makeText(ItemList.this, userName,
+                            Toast.LENGTH_LONG).show();
+                    MyAdapter adapter5 = new MyAdapter();
+                    listView.setAdapter(adapter5);
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","Barama");
+                    hashMap.put("code","4383");
+                    arrayList.add(hashMap);
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","Barkal");
+                    hashMap.put("code","4383");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","Bhailtali");
+                    hashMap.put("code","4383");
+                    arrayList.add(hashMap);
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","Dhopachari");
+                    hashMap.put("code","4381");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","Dohazari");
+                    hashMap.put("code","4382");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","Hashimpur");
+                    hashMap.put("code","4381");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","Joara");
+                    hashMap.put("code","4380");
+                    arrayList.add(hashMap);
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","Kanchanabad");
+                    hashMap.put("code","4381");
+                    arrayList.add(hashMap);
+
+
+                    hashMap=new HashMap<>();
+                    hashMap.put("name","Satbaria");
+                    hashMap.put("code","4383");
+                    arrayList.add(hashMap);
+                    break;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -195,12 +382,7 @@ public class ItemList extends AppCompatActivity {
                             dialIntent.setData(Uri.parse(String.format("tel:%s", fireservicenumbervalue)));
                             Toast.makeText(ItemList.this,"call",Toast.LENGTH_SHORT).show();
                             startActivity(dialIntent );
-//                            if (dialIntent.resolveActivity(getPackageManager()) != null) {
-//                                startActivity(dialIntent);
-//                            }
-//                            else {
-//                                Log.e(TAG, "Can't resolve app for ACTION_DIAL Intent.");
-//                            }
+//
                         }
                     });
                  return view2;
@@ -225,7 +407,52 @@ public class ItemList extends AppCompatActivity {
                         }
                     });
                     return view3;
+                case "police":
+                    LayoutInflater layoutInflater3 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View view4 = layoutInflater3.inflate(R.layout.layoutwithuserandcall,viewGroup,false);
+                    HashMap<String,String> hashMap3 = arrayList.get(i);
+                    TextView policename = view4.findViewById(R.id.nameofman);
+                    TextView policenumber = view4.findViewById(R.id.number);
+                    TextView status=view4.findViewById(R.id.status);
+                    String policenamevalue = hashMap3.get("name");
+                    String policenumbervalue = hashMap3.get("number");
+                    String policestatusvalue = hashMap3.get("status");
+                    policename.setText(policenamevalue);
+                    policenumber.setText(policenumbervalue);
+                    status.setText(policestatusvalue);
+                    LinearLayout linearLayout2 = view4.findViewById(R.id.listuser);
+                    linearLayout2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent dialIntent = new Intent(Intent.ACTION_DIAL);
+                            dialIntent.setData(Uri.parse(String.format("tel:%s", policenumbervalue)));
+                            Toast.makeText(ItemList.this,"call",Toast.LENGTH_SHORT).show();
+                            startActivity(dialIntent );
 
+                        }
+                    });
+                    return  view4;
+                case "emargency":
+                    LayoutInflater layoutInflater4 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View view5 = layoutInflater4.inflate(R.layout.demo_list_view_call,viewGroup,false);
+                    HashMap<String,String> hashMap4 = arrayList.get(i);
+                    TextView emargencyservicename = view5.findViewById(R.id.textitemdemo1);
+                    TextView emargencyservicenumber = view5.findViewById(R.id.number);
+                    String emargencylservicenamevalue = hashMap4.get("name");
+                    String emargencyservicenumbervalue = hashMap4.get("number");
+                    emargencyservicename.setText(emargencylservicenamevalue);
+                    emargencyservicenumber.setText(emargencyservicenumbervalue);
+                    LinearLayout linearLayout3 = view5.findViewById(R.id.demolistwithcall);
+                    linearLayout3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent dialIntent = new Intent(Intent.ACTION_DIAL);
+                            dialIntent.setData(Uri.parse(String.format("tel:%s",emargencyservicenumbervalue )));
+                            Toast.makeText(ItemList.this,"call",Toast.LENGTH_SHORT).show();
+                            startActivity(dialIntent );
+                        }
+                    });
+                    return view5;
 
 
                 default:
