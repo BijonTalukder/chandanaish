@@ -14,6 +14,11 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import org.w3c.dom.Text;
 
@@ -21,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+    AdView mAdView;
     ImageView temparature;
     TextView marq ,dateTime;
      CardView newslist,educationlist,fireservicelist,doctorlist,bloodlist,hospitallist,policelist,
@@ -29,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private MeowBottomNavigation meowBottomNavigation;
     ImageSlider imageSlider;
     ArrayList<SlideModel> imageList = new ArrayList<>();
+
 
 
     @Override
@@ -58,9 +65,17 @@ public class MainActivity extends AppCompatActivity {
         postcodelist = findViewById(R.id.postcode);
         famouslist = findViewById(R.id.bikhatomanush);
         garivaralist=findViewById(R.id.garibara);
+        mAdView = findViewById(R.id.adView);
 
+        //ad
         marq.setSelected(true);
-
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 
 
