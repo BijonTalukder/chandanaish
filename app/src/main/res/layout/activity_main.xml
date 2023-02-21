@@ -30,8 +30,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hjsdfgsdg"
-                android:textSize="20dp" />
+                android:text="প্রিয় চন্দনাইশ"
+                android:textColor="#FFFFFF"
+                android:textSize="23dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/dateandtime"
