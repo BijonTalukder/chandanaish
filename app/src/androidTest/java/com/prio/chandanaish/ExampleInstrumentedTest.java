@@ -1,4 +1,4 @@
-package com.example.chandanaish;
+package com.prio.chandanaish;
 
 import android.content.Context;
 

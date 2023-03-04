@@ -1,32 +1,34 @@
-package com.example.chandanaish;
+package com.prio.chandanaish;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class ItemList extends AppCompatActivity {
     ListView listView;
     public static String role;
     ArrayList<HashMap<String,String>> arrayList = new ArrayList();
     HashMap<String,String> hashMap;
-   int[] flag={R.drawable.b1,R.drawable.b2,R.drawable.b3};
+   int[] flag={R.drawable.b1,R.drawable.b2,R.drawable.b3,
+           R.drawable.b4,R.drawable.b5,R.drawable.b6,R.drawable.b7,
+           R.drawable.b8,R.drawable.b32};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +44,49 @@ public class ItemList extends AppCompatActivity {
             {
                 case "news":
                     Toast.makeText(ItemList.this, userName,
-                        Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_LONG).show();
+                    MyAdapter adapter6 = new MyAdapter();
+                    listView.setAdapter(adapter6);
+                    hashMap = new HashMap<>();
+                    hashMap.put("link","https://www.prothomalo.com/");
+                    arrayList.add(hashMap);
+                    hashMap = new HashMap<>();
+                    hashMap.put("link","https://ajkalerkhobor.net/");
+                    arrayList.add(hashMap);
 
+                    hashMap = new HashMap<>();
+                    hashMap.put("link","https://www.dailynayadiganta.com/");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("link","https://www.daily-sun.com/");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("link","https://www.bhorerkagoj.com/");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("link","https://sangbad.net.bd/");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("link","https://mzamin.com/");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("link"," https://bartamanpatrika.com/home");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("link","https://www.ittefaq.com.bd/");
+                    arrayList.add(hashMap);
                     break;
 
 
 
-                    case "education":
+
+                case "education":
                     Toast.makeText(ItemList.this, userName,
                             Toast.LENGTH_LONG).show();
                     MyAdapter adapter = new MyAdapter();
@@ -311,6 +349,7 @@ public class ItemList extends AppCompatActivity {
 
 
 
+
                 default:
                     Toast.makeText(ItemList.this, "toast",
                       Toast.LENGTH_LONG).show();
@@ -345,14 +384,17 @@ public class ItemList extends AppCompatActivity {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
+            Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
 
 
 
             switch (role)
             {
+
                 case "education":
                     LayoutInflater layoutInflater= (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View view1 = layoutInflater.inflate(R.layout.demo_list_view,viewGroup,false);
+                    view1.setAnimation(animation);
 //                    ImageView imageView= view1.findViewById(R.id.img);
 
                     TextView Title = view1.findViewById(R.id.textitemdemo);
@@ -366,6 +408,7 @@ public class ItemList extends AppCompatActivity {
                 case "fire":
                     LayoutInflater layoutInflater1 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                  View view2 = layoutInflater1.inflate(R.layout.demo_list_view_call,viewGroup,false);
+                    view2.setAnimation(animation);
                  TextView fireservicename = view2.findViewById(R.id.textitemdemo1);
                  TextView fireservicenumber = view2.findViewById(R.id.number);
                  HashMap<String,String> hashMap1 = arrayList.get(i);
@@ -388,7 +431,9 @@ public class ItemList extends AppCompatActivity {
                  return view2;
                 case "hospital":
                     LayoutInflater layoutInflater2 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
                     View view3 = layoutInflater2.inflate(R.layout.demo_list_view_call,viewGroup,false);
+                    view3.setAnimation(animation);
                     HashMap<String,String> hashMap2 = arrayList.get(i);
                     TextView hospitalservicename = view3.findViewById(R.id.textitemdemo1);
                     TextView hospitalservicenumber = view3.findViewById(R.id.number);
@@ -410,6 +455,7 @@ public class ItemList extends AppCompatActivity {
                 case "police":
                     LayoutInflater layoutInflater3 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View view4 = layoutInflater3.inflate(R.layout.layoutwithuserandcall,viewGroup,false);
+                    view4.setAnimation(animation);
                     HashMap<String,String> hashMap3 = arrayList.get(i);
                     TextView policename = view4.findViewById(R.id.nameofman);
                     TextView policenumber = view4.findViewById(R.id.number);
@@ -435,6 +481,7 @@ public class ItemList extends AppCompatActivity {
                 case "emargency":
                     LayoutInflater layoutInflater4 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View view5 = layoutInflater4.inflate(R.layout.demo_list_view_call,viewGroup,false);
+                    view5.setAnimation(animation);
                     HashMap<String,String> hashMap4 = arrayList.get(i);
                     TextView emargencyservicename = view5.findViewById(R.id.textitemdemo1);
                     TextView emargencyservicenumber = view5.findViewById(R.id.number);
@@ -456,6 +503,7 @@ public class ItemList extends AppCompatActivity {
                 case "postcode":
                     LayoutInflater layoutInflater5 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View view6 = layoutInflater5.inflate(R.layout.demo_list_view,viewGroup,false);
+                    view6.startAnimation(animation);
                     HashMap<String,String> hashMap5 = arrayList.get(i);
                     TextView postname = view6.findViewById(R.id.textitemdemo);
                     TextView code = view6.findViewById(R.id.eiin);
@@ -464,6 +512,24 @@ public class ItemList extends AppCompatActivity {
                     postname.setText(postnamevalue);
                     code.setText("CODE : "+postcodevalue);
                     return  view6;
+                case "news":
+                    LayoutInflater layoutInflater6= (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View view7 = layoutInflater6.inflate(R.layout.demoimage,viewGroup,false);
+                    view7.setAnimation(animation);
+                    HashMap<String,String> hashMap6 = arrayList.get(i);
+                    ImageView newsImage = view7.findViewById(R.id.demoimageimageview);
+                    newsImage.setImageResource(flag[i]);
+                    String urlLink= hashMap6.get("link");
+                    newsImage.setOnClickListener(view8 -> {
+                        Web.url=urlLink;
+                        Intent intent= new Intent(getApplicationContext(), Web.class);
+                        startActivity(intent);
+
+
+                    });
+
+                    return view7;
+
 
 
                 default:

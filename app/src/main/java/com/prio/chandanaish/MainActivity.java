@@ -1,5 +1,6 @@
-package com.example.chandanaish;
+package com.prio.chandanaish;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -7,26 +8,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-
 import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-
-import org.w3c.dom.Text;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     AdView mAdView;
+    private InterstitialAd mInterstitialAd;
     ImageView temparature;
     TextView marq ,dateTime;
      CardView newslist,educationlist,fireservicelist,doctorlist,bloodlist,hospitallist,policelist,
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         });
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        loadFullScreenad();
 
 
 
@@ -93,18 +95,22 @@ public class MainActivity extends AppCompatActivity {
         meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home_24));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_baseline_add_circle_24));
 
-        temparature.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Web.url="https://justweather.org/Bangladesh/Chittagong/Chittagong/Chandanaish/Hourly/";
-                Intent intent= new Intent(getApplicationContext(), Web.class);
-                startActivity(intent);
+        temparature.setOnClickListener(view -> {
+//                mInterstitialAd.show(MainActivity.this);
+            Web.url="https://justweather.org/Bangladesh/Chittagong/Chittagong/Chandanaish/Hourly/";
+            Intent intent= new Intent(getApplicationContext(), Web.class);
+            startActivity(intent);
 
-            }
+        });
+        resultlist.setOnClickListener(view -> {
+            Web.url ="https://sresult.bise-ctg.gov.bd/individual/";
+            Intent intent= new Intent(getApplicationContext(), Web.class);
+            startActivity(intent);
         });
         newslist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                mInterstitialAd.show(MainActivity.this);
                 ItemList.role="news";
                 Intent intent = new Intent(getApplicationContext(), ItemList.class);
                 intent.putExtra("key","news");
@@ -193,4 +199,61 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    private  void loadFullScreenad(){
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        InterstitialAd.load(this,"ca-app-pub-3186033098717337/2130752975", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
+                            @Override
+                            public void onAdClicked() {
+
+                            }
+
+                            @Override
+                            public void onAdDismissedFullScreenContent() {
+                                // Called when ad is dismissed.
+                                // Set the ad reference to null so you don't show the ad a second time.
+
+                                mInterstitialAd = null;
+                            }
+
+                            @Override
+                            public void onAdFailedToShowFullScreenContent(AdError adError) {
+                                // Called when ad fails to show.
+
+                                mInterstitialAd = null;
+                            }
+
+                            @Override
+                            public void onAdImpression() {
+                                // Called when an impression is recorded for an ad.
+
+                            }
+
+                            @Override
+                            public void onAdShowedFullScreenContent() {
+                                // Called when ad is shown.
+
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+
+                        mInterstitialAd = null;
+                    }
+                });
+
+    }
+
 }

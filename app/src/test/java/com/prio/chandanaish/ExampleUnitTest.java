@@ -1,4 +1,4 @@
-package com.example.chandanaish;
+package com.prio.chandanaish;
 
 import org.junit.Test;
 

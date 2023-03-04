@@ -1,10 +1,9 @@
-package com.example.chandanaish;
+package com.prio.chandanaish;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.webkit.WebView;
-
 public class Web extends AppCompatActivity {
     public  static String url;
     WebView webView;
