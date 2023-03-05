@@ -333,6 +333,67 @@ public class ItemList extends AppCompatActivity {
                     hashMap.put("code","4383");
                     arrayList.add(hashMap);
                     break;
+                case "doctor":
+                    Toast.makeText(ItemList.this,"ধন্যবাদ আপনি এখন ডাক্তার এর লিস্ট দেখতে পাবেন",Toast.LENGTH_SHORT).show();
+                    MyAdapter adapter7 = new MyAdapter();
+                    listView.setAdapter(adapter7);
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","\tডা: বিপ্লব ভট্টাচার্য্য");
+                    hashMap.put("designation","\tজুনিয়র কনসালটেন্ট");
+                    hashMap.put("special","কার্ডিওলজি");
+                    hashMap.put("camber","");
+                    hashMap.put("visitingtime","");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","ডাঃ মোঃ মোস্তাফিজুর রহমান");
+                    hashMap.put("designation","এম বি বি এস(চমেক),বিসিএস(স্বাস্থ্য),কার্ডেওলজি(চমেক)");
+                    hashMap.put("special","হৃদরোগ ও মেডিসিন বিশেষজ্ঞ");
+                    hashMap.put("camber","গ্রীন হাসপাতাল");
+                    hashMap.put("visitingtime","সোমবার দুপুর ১২-২ টা ");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","ডাঃ রবিউল আলম");
+                    hashMap.put("designation","এম বি বি এস(ডিএমসি),বিসিএস(স্বাস্থ্য),এফসিপিএস(মেডিসিন)");
+                    hashMap.put("special","বাতরোগ ও মেডিসিন বিশেষজ্ঞ");
+                    hashMap.put("camber","গ্রীন হাসপাতাল");
+                    hashMap.put("visitingtime","প্রতি সোমবার");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","ডাঃ কানিজ নার্সমি আক্তার");
+                    hashMap.put("designation","এমবিবিএস,এফ বি বিএস(গাইনী & অবস)");
+                    hashMap.put("special","গাইনি বিশেষজ্ঞ");
+                    hashMap.put("camber","গ্রীন হাসপাতাল");
+                    hashMap.put("visitingtime","শুক্র,শনি,সোম,বুধ সন্ধ্যা ৬-৯ টা");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","ডাঃ মতিন");
+                    hashMap.put("designation","");
+                    hashMap.put("special"," মেডিসিন বিশেষজ্ঞ");
+                    hashMap.put("camber","আমরা কমিউনিটি হাসপাতাল");
+                    hashMap.put("visitingtime","সোম থেকে শুক্র");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","\tডা: শাহীন হোসায়ন");
+                    hashMap.put("designation","আবাসিক মেডিকেল অফিসার");
+                    hashMap.put("special","");
+                    hashMap.put("camber","চন্দনাইশ মেডিক্যাল");
+                    hashMap.put("visitingtime","");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","\tডা: তাজিন সুলতানা");
+                    hashMap.put("designation","জুনিয়র কনসালটেন্ট");
+                    hashMap.put("special","গাঈনী");
+                    hashMap.put("camber","চন্দনাইশ মেডিক্যাল");
+                    hashMap.put("visitingtime","");
+                    arrayList.add(hashMap);
+
+                    break;
 
 
 
@@ -529,6 +590,30 @@ public class ItemList extends AppCompatActivity {
                     });
 
                     return view7;
+                case "doctor":
+                    LayoutInflater layoutInflater7 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View view8 = layoutInflater7.inflate(R.layout.doctordemolist,viewGroup,false);
+                    view8.startAnimation(animation);
+                    HashMap<String,String> hashMap7 = arrayList.get(i);
+                    TextView DoctorName = view8.findViewById(R.id.doctorName);
+                    TextView DoctorDesignation = view8.findViewById(R.id.doctordesignation);
+                    TextView DoctorSpeciality = view8.findViewById(R.id.spacalist);
+                    TextView DoctorCamber= view8.findViewById(R.id.doctorcember);
+                    TextView visitingTime = view8.findViewById(R.id.doctorvisitingtime);
+                    String doctorNamevalue = hashMap7.get("name");
+                    String designationvalue= hashMap7.get("designation");
+                    String specialityvalue= hashMap7.get("special");
+                    String cambervalue= hashMap7.get("camber");
+                    String visitingtimevalue= hashMap7.get("visitingtime");
+
+                    //set value
+                    DoctorName.setText(doctorNamevalue);
+                    DoctorDesignation.setText(designationvalue);
+                    DoctorSpeciality.setText(specialityvalue);
+                    DoctorCamber.setText(cambervalue);
+                    visitingTime.setText(visitingtimevalue);
+                    return view8;
+
 
 
 
