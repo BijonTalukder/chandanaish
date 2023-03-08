@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -27,6 +29,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     AdView mAdView;
+    LinearLayout webview;
+    ProgressBar progressBar;
     private InterstitialAd mInterstitialAd;
     ImageView temparature;
     TextView marq ,dateTime;
@@ -68,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         garivaralist=findViewById(R.id.garibara);
         mAdView = findViewById(R.id.adView);
 
+
         //ad
         marq.setSelected(true);
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
@@ -76,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        loadFullScreenad();
+//        mAdView.loadAd(adRequest);
+//        loadFullScreenad();
 
 
 
@@ -193,6 +198,25 @@ public class MainActivity extends AppCompatActivity {
                 ItemList.role="postcode";
                 Intent intent = new Intent(getApplicationContext(), ItemList.class);
                 intent.putExtra("key","postcode");
+                startActivity(intent);
+
+            }
+        });
+        visitedplacelist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ItemList.role="visitedplace";
+                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+                intent.putExtra("key","visitedplace");
+                startActivity(intent);
+            }
+        });
+        famouslist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ItemList.role="famousman";
+                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+                intent.putExtra("key","famousman");
                 startActivity(intent);
 
             }

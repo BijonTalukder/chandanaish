@@ -338,8 +338,8 @@ public class ItemList extends AppCompatActivity {
                     MyAdapter adapter7 = new MyAdapter();
                     listView.setAdapter(adapter7);
                     hashMap = new HashMap<>();
-                    hashMap.put("name","\tডা: বিপ্লব ভট্টাচার্য্য");
-                    hashMap.put("designation","\tজুনিয়র কনসালটেন্ট");
+                    hashMap.put("name","ডা: বিপ্লব ভট্টাচার্য্য");
+                    hashMap.put("designation","জুনিয়র কনসালটেন্ট");
                     hashMap.put("special","কার্ডিওলজি");
                     hashMap.put("camber","");
                     hashMap.put("visitingtime","");
@@ -372,13 +372,13 @@ public class ItemList extends AppCompatActivity {
                     hashMap = new HashMap<>();
                     hashMap.put("name","ডাঃ মতিন");
                     hashMap.put("designation","");
-                    hashMap.put("special"," মেডিসিন বিশেষজ্ঞ");
+                    hashMap.put("special","মেডিসিন বিশেষজ্ঞ");
                     hashMap.put("camber","আমরা কমিউনিটি হাসপাতাল");
                     hashMap.put("visitingtime","সোম থেকে শুক্র");
                     arrayList.add(hashMap);
 
                     hashMap = new HashMap<>();
-                    hashMap.put("name","\tডা: শাহীন হোসায়ন");
+                    hashMap.put("name","ডা: শাহীন হোসায়ন");
                     hashMap.put("designation","আবাসিক মেডিকেল অফিসার");
                     hashMap.put("special","");
                     hashMap.put("camber","চন্দনাইশ মেডিক্যাল");
@@ -386,7 +386,7 @@ public class ItemList extends AppCompatActivity {
                     arrayList.add(hashMap);
 
                     hashMap = new HashMap<>();
-                    hashMap.put("name","\tডা: তাজিন সুলতানা");
+                    hashMap.put("name","ডা: তাজিন সুলতানা");
                     hashMap.put("designation","জুনিয়র কনসালটেন্ট");
                     hashMap.put("special","গাঈনী");
                     hashMap.put("camber","চন্দনাইশ মেডিক্যাল");
@@ -394,6 +394,108 @@ public class ItemList extends AppCompatActivity {
                     arrayList.add(hashMap);
 
                     break;
+                case "visitedplace":
+                    Toast.makeText(ItemList.this, userName,Toast.LENGTH_LONG).show();
+                    MyAdapter adapter8 = new MyAdapter();
+                    listView.setAdapter(adapter8);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","শুক্লাম্বর দীঘি");
+                    hashMap.put("description","");
+                    hashMap.put("","কার্ডিওলজি");
+                    arrayList.add(hashMap);
+
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","বিজিসি ট্রাস্ট বিশ্ববিদ্যালয় বাংলাদেশ লেক ও বিজিসি বিদ্যানগর এলাকা");
+                    hashMap.put("description","");
+                    hashMap.put("","কার্ডিওলজি");
+                    arrayList.add(hashMap);
+
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","দুধপুকুরিয়া-ধোপাছড়ি বন্যপ্রাণ অভয়ারণ্য");
+                    hashMap.put("description","");
+                    hashMap.put("","কার্ডিওলজি");
+                    arrayList.add(hashMap);
+
+
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","চা বাগান, কাঞ্চনাবাদ");
+                    hashMap.put("description","");
+                    hashMap.put("","কার্ডিওলজি");
+                    arrayList.add(hashMap);
+
+
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","বৈলতলী সাঙ্গু নদী");
+                    hashMap.put("description","");
+                    hashMap.put("","কার্ডিওলজি");
+                    arrayList.add(hashMap);
+
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","জামিরজুরী বধ্যভূমি");
+                    hashMap.put("description","");
+                    hashMap.put("","কার্ডিওলজি");
+                    arrayList.add(hashMap);
+
+
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","হযরত ভূঁই খাজা জামে মসজিদ");
+                    hashMap.put("description","");
+                    hashMap.put("","কার্ডিওলজি");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","সাতবাড়িয়া শান্তি বিহার");
+                    hashMap.put("description","");
+                    hashMap.put("","কার্ডিওলজি");
+                    arrayList.add(hashMap);
+
+
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","বুড়ি কালি মন্দির, বরমা");
+                    hashMap.put("description","");
+                    hashMap.put("","কার্ডিওলজি");
+                    arrayList.add(hashMap);
+
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","নবরত্ন বিহার, সাতবাড়িয়া");
+                    hashMap.put("description","");
+                    hashMap.put("","কার্ডিওলজি");
+                    arrayList.add(hashMap);
+
+//
+//                    hashMap = new HashMap<>();
+//                    hashMap.put("name","শুক্লাম্বর দীঘি");
+//                    hashMap.put("description","");
+//                    hashMap.put("","কার্ডিওলজি");
+//                    arrayList.add(hashMap);
+//
+//
+//                    hashMap = new HashMap<>();
+//                    hashMap.put("name","শুক্লাম্বর দীঘি");
+//                    hashMap.put("description","");
+//                    hashMap.put("","কার্ডিওলজি");
+//                    arrayList.add(hashMap);
+                    break;
+                case "famousman":
+                    Toast.makeText(ItemList.this, userName,Toast.LENGTH_LONG).show();
+                    MyAdapter adapter9 = new MyAdapter();
+                    listView.setAdapter(adapter9);
+                    break;
+
+
+
+
+
+
 
 
 
