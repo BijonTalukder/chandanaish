@@ -1,5 +1,7 @@
 package com.prio.chandanaish;
 
+import static com.prio.chandanaish.Web.url;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -18,6 +20,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.imageview.ShapeableImageView;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -341,7 +347,7 @@ public class ItemList extends AppCompatActivity {
                     hashMap.put("name","ডা: বিপ্লব ভট্টাচার্য্য");
                     hashMap.put("designation","জুনিয়র কনসালটেন্ট");
                     hashMap.put("special","কার্ডিওলজি");
-                    hashMap.put("camber","");
+                    hashMap.put("camber","চট্টগ্রাম মেডিক্যাল কলেজ");
                     hashMap.put("visitingtime","");
                     arrayList.add(hashMap);
 
@@ -489,6 +495,68 @@ public class ItemList extends AppCompatActivity {
                     Toast.makeText(ItemList.this, userName,Toast.LENGTH_LONG).show();
                     MyAdapter adapter9 = new MyAdapter();
                     listView.setAdapter(adapter9);
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","কর্নেল অলি আহমেদ");
+                    hashMap.put("title","বীর বিক্রম খেতাব প্রাপ্ত বীর মুক্তিযোদ্ধা ও রাজনীতিবিদ");
+                    hashMap.put("imageurl","https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Oli_Ahmed_%2C_President_-_LDP.jpg/220px-Oli_Ahmed_%2C_President_-_LDP.jpg");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","আফসার উদ্দিন আহমেদ");
+                    hashMap.put("title","প্রাক্তন সংসদ সদস্য");
+                    hashMap.put("imageurl","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXb9vYRmXubOGerPoeEAAuZGUuvjqqo5oJEa1OL4CY&s");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","যতীন্দ্রমোহন সেনগুপ্ত");
+                    hashMap.put("title","রাজনীতিবিদ ও আইনজীবী");
+                    hashMap.put("imageurl","https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Bust_Of_Jatindra_Mohan_Sengupta_in_JM_Sen_hall_crop.JPG/220px-Bust_Of_Jatindra_Mohan_Sengupta_in_JM_Sen_hall_crop.JPG");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","যাত্রামোহন সেন");
+                    hashMap.put("title","রাজনীতিবিদ ও আইনজীবী");
+                    hashMap.put("imageurl","https://upload.wikimedia.org/wikipedia/bn/a/ac/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%8B%E0%A6%B9%E0%A6%A8_%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%B0_%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%B0.jpg");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","হোসেন জিল্লুর রহমান");
+                    hashMap.put("title","অর্থনীতিবিদ ও তত্ত্বাবধায়ক সরকারের প্রাক্তন উপদেষ্টা");
+                    hashMap.put("imageurl","https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Hossain_Zillur_Rahman_2016.jpg/220px-Hossain_Zillur_Rahman_2016.jpg");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","আবদুল করিম");
+                    hashMap.put("title","বীর বিক্রম খেতাব প্রাপ্ত বীর মুক্তিযোদ্ধা");
+                    hashMap.put("imageurl","https://images.prothomalo.com/prothomalo-bangla/2021-07/acc64d09-fb09-41a1-b1de-c33797e10ce8/432_Abdul_Karim_BB__431_.jpg?format=webp&w=1366&dpr=1.0");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","আবুল কাসেম");
+                    hashMap.put("title","ভাষা সৈনিক ও শিক্ষাবিদ");
+                    hashMap.put("imageurl","https://upload.wikimedia.org/wikipedia/commons/b/b6/Principal_Abul_Kashem_003.jpg");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","আহমদ ছফা");
+                    hashMap.put("title","কবি ও সাহিত্যিক");
+                    hashMap.put("imageurl","https://upload.wikimedia.org/wikipedia/commons/1/1e/Ahmed_Sofa.jpg");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","নজরুল ইসলাম চৌধুরী");
+                    hashMap.put("title","রাজনীতিবিদ");
+                    hashMap.put("imageurl","https://amarmp.com/propic/profile/750_1480278991.png");
+                    arrayList.add(hashMap);
+
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","নুরুল ইসলাম ");
+                    hashMap.put("title","চিকিৎসক ও জাতীয় অধ্যাপক");
+                    hashMap.put("imageurl","https://www.bhorerkagoj.com/wp-content/uploads/2020/01/1-4.jpg");
+                    arrayList.add(hashMap);
+
+
+
                     break;
 
 
@@ -684,7 +752,7 @@ public class ItemList extends AppCompatActivity {
                     newsImage.setImageResource(flag[i]);
                     String urlLink= hashMap6.get("link");
                     newsImage.setOnClickListener(view8 -> {
-                        Web.url=urlLink;
+                        url=urlLink;
                         Intent intent= new Intent(getApplicationContext(), Web.class);
                         startActivity(intent);
 
@@ -715,6 +783,26 @@ public class ItemList extends AppCompatActivity {
                     DoctorCamber.setText(cambervalue);
                     visitingTime.setText(visitingtimevalue);
                     return view8;
+                case "famousman":
+                    LayoutInflater layoutInflater8 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View view9 = layoutInflater8.inflate(R.layout.doctordemolist,viewGroup,false);
+                    view9.startAnimation(animation);
+                    HashMap<String,String> hashMap8 = arrayList.get(i);
+                    ShapeableImageView imageView = view9.findViewById(R.id.doctorImage);
+                    TextView title = view9.findViewById(R.id.spacalist);
+                    TextView FamousmanName = view9.findViewById(R.id.doctorName);
+                    String FamousmanNameValue = hashMap8.get("name");
+                    String titleView = hashMap8.get("title");
+                    String imageurlvalue=hashMap8.get("imageurl");
+                    title.setText(titleView);
+
+                    FamousmanName.setText(FamousmanNameValue);
+                    Picasso.get()
+                            .load(imageurlvalue)
+                            .fit()
+
+                            .into(imageView);
+                   return view9;
 
 
 
