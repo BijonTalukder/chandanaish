@@ -803,6 +803,17 @@ public class ItemList extends AppCompatActivity {
 
                             .into(imageView);
                    return view9;
+                case "visitedplace":
+                    LayoutInflater layoutInflater9 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View view10 = layoutInflater9.inflate(R.layout.demo_list_view,viewGroup,false);
+                    view10.startAnimation(animation);
+                    HashMap<String,String> hashMap9 = arrayList.get(i);
+                    TextView placeName = view10.findViewById(R.id.textitemdemo);
+                    String placeNameValue = hashMap9.get("name");
+                    placeName.setText(placeNameValue);
+                    return  view10;
+
+
 
 
 
