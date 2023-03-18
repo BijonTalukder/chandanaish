@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     TextView marq ,dateTime;
      CardView newslist,educationlist,fireservicelist,doctorlist,bloodlist,hospitallist,policelist,
              diagonesticlist,visitedplacelist,emagencynumberlst,resultlist,songotonlist,esebalist,
-             postcodelist,famouslist,garivaralist;
+             postcodelist,famouslist,garivaralist,history;
     private MeowBottomNavigation meowBottomNavigation;
     ImageSlider imageSlider;
     ArrayList<SlideModel> imageList = new ArrayList<>();
@@ -66,10 +66,11 @@ public class MainActivity extends AppCompatActivity {
         emagencynumberlst = findViewById(R.id.emargencynumber);
         resultlist = findViewById(R.id.result);
         songotonlist = findViewById(R.id.songgoton);
-        esebalist = findViewById(R.id.eseba);
+        esebalist = findViewById(R.id.dokan);
         postcodelist = findViewById(R.id.postcode);
         famouslist = findViewById(R.id.bikhatomanush);
         garivaralist=findViewById(R.id.garibara);
+        history = findViewById(R.id.itihash);
         mAdView = findViewById(R.id.adView);
 
 
@@ -81,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         AdRequest adRequest = new AdRequest.Builder().build();
-//        mAdView.loadAd(adRequest);
-//        loadFullScreenad();
+        mAdView.loadAd(adRequest);
+        loadFullScreenad();
 
 
 
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         newslist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                mInterstitialAd.show(MainActivity.this);
+                mInterstitialAd.show(MainActivity.this);
                 ItemList.role="news";
                 Intent intent = new Intent(getApplicationContext(), ItemList.class);
                 intent.putExtra("key","news");
@@ -156,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ItemList.role="blood";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+                Intent intent = new Intent(getApplicationContext(), Blood.class);
                 intent.putExtra("key","blood");
                 startActivity(intent);
 
@@ -221,6 +222,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        esebalist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ItemList.role="dokan";
+                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+                intent.putExtra("key","dokan");
+                startActivity(intent);
+
+            }
+        });
+        history.setOnClickListener(view -> {
+            Intent intent = new Intent(this,itihash.class);
+            startActivity(intent);
+        });
+
 
     }
     private  void loadFullScreenad(){

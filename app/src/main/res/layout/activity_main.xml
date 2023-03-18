@@ -653,7 +653,7 @@
         android:weightSum="12"        >
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:id="@+id/eseba"
+            android:id="@+id/dokan"
             android:elevation="5dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
@@ -669,14 +669,13 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    app:lottie_url="https://assets6.lottiefiles.com/packages/lf20_BExwzy.json
-"
+                    app:lottie_url="https://assets3.lottiefiles.com/packages/lf20_57TxAX.json"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ই-সেবা"
+                    android:text="দোকান"
                     android:textSize="12dp"
                     android:textStyle="bold"
                     android:padding="3dp"
@@ -828,7 +827,7 @@
                     android:layout_gravity="center_horizontal"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
-                    app:lottie_url="https://assets4.lottiefiles.com/packages/lf20_lsfhjhqp.json" />
+                    app:lottie_url="https://assets2.lottiefiles.com/packages/lf20_ysrn2iwp.json" />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -465,7 +465,7 @@ public class ItemList extends AppCompatActivity {
 
 
                     hashMap = new HashMap<>();
-                    hashMap.put("name","বুড়ি কালি মন্দির, বরমা");
+                    hashMap.put("name","বুড়া কালি মন্দির, বরমা");
                     hashMap.put("description","");
                     hashMap.put("","কার্ডিওলজি");
                     arrayList.add(hashMap);
@@ -555,6 +555,23 @@ public class ItemList extends AppCompatActivity {
                     hashMap.put("imageurl","https://www.bhorerkagoj.com/wp-content/uploads/2020/01/1-4.jpg");
                     arrayList.add(hashMap);
 
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","মনিরুজ্জামান ইসলামাবাদী");
+                    hashMap.put("title","ইসলামী চিন্তাবিদ, জাতীয়তাবাদী আন্দোলনের সক্রিয় কর্মী ও সাংবাদিক");
+                    hashMap.put("imageurl","https://upload.wikimedia.org/wikipedia/bn/a/a7/%E0%A6%AE%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8_%E0%A6%87%E0%A6%B8%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%80.jpg");
+                    arrayList.add(hashMap);
+
+
+
+                    break;
+
+                case "dokan":
+                    Toast.makeText(ItemList.this, userName,Toast.LENGTH_LONG).show();
+                    MyAdapter adapter10 = new MyAdapter();
+                    listView.setAdapter(adapter10);
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","বরমা মিষ্টি ঘর");
+                    hashMap.put("desc","");
 
 
                     break;
