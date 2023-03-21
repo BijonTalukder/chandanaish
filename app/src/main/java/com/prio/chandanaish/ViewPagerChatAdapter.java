@@ -33,7 +33,7 @@ public class ViewPagerChatAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 7;
     }
 
 
@@ -41,13 +41,21 @@ public class ViewPagerChatAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         if(position==0){
-            return "chats";
+            return "A+";
         }
         else if(position==1){
-            return "Ab+";
+            return "B+";
         }
+        else if(position==2)
+            return "AB+";
+        else if(position==3)
+            return  "AB-";
+        else if(position==4)
+            return "O+";
+        else if(position==5) return "A-";
+
         else{
-            return  "a";
+            return  "B-";
         }
     }
 }
