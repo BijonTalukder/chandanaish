@@ -399,6 +399,14 @@ public class ItemList extends AppCompatActivity {
                     hashMap.put("visitingtime","");
                     arrayList.add(hashMap);
 
+                    hashMap = new HashMap<>();
+                    hashMap.put("name","ডা: তাজিন সুলতানা");
+                    hashMap.put("designation","জুনিয়র কনসালটেন্ট");
+                    hashMap.put("special","গাঈনী");
+                    hashMap.put("camber","চন্দনাইশ মেডিক্যাল");
+                    hashMap.put("visitingtime","");
+                    arrayList.add(hashMap);
+
                     break;
                 case "visitedplace":
                     Toast.makeText(ItemList.this, userName,Toast.LENGTH_LONG).show();

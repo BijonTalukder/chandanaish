@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         newslist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mInterstitialAd.show(MainActivity.this);
+                // mInterstitialAd.show(MainActivity.this);
                 ItemList.role="news";
                 Intent intent = new Intent(getApplicationContext(), ItemList.class);
                 intent.putExtra("key","news");
