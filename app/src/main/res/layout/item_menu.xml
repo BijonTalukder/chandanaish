@@ -1,0 +1,43 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:minWidth="48dp"
+    android:minHeight="48dp"
+
+    android:elevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <!-- Ensure minimum size for Lottie or Image -->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimation"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/cardImage"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/cardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -27,7 +27,7 @@ public class Web extends AppCompatActivity {
         progressBar = findViewById(R.id.pBar);
 //        webView.getSettings().setUserAgentString(USER_AGENT_);
         webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setAppCacheEnabled(true);
+//        webVi?ew.getSettings().set
         webView.getSettings().setAllowFileAccess(true);
 
         webView.getSettings().setJavaScriptEnabled(true);
