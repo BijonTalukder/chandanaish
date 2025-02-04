@@ -3,6 +3,8 @@ package com.prio.chandanaish;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+//import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -26,22 +28,29 @@ import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class MainActivity extends AppCompatActivity {
     AdView mAdView;
     LinearLayout webview;
+    LinearLayout layoutone,layounttwo;
     ProgressBar progressBar;
     private InterstitialAd mInterstitialAd;
     ImageView temparature;
     TextView marq ,dateTime;
      CardView newslist,educationlist,fireservicelist,doctorlist,bloodlist,hospitallist,policelist,
              diagonesticlist,visitedplacelist,emagencynumberlst,resultlist,songotonlist,esebalist,
-             postcodelist,famouslist,garivaralist,history;
-    private MeowBottomNavigation meowBottomNavigation;
+             postcodelist,famouslist,garivaralist,history,secoundlaybtn,Play;
+//    private MeowBottomNavigation meowBottomNavigation;
     ImageSlider imageSlider;
     ArrayList<SlideModel> imageList = new ArrayList<>();
 
-
+    private RecyclerView recyclerViewMenu;
+    private MenuAdapter menuAdapter;
+    private List<MenuItemModel> menuItemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +60,10 @@ public class MainActivity extends AppCompatActivity {
         marq = findViewById(R.id.marqueetext);
         imageSlider =findViewById(R.id.image_slider);
         dateTime= findViewById(R.id.dateandtime);
-        meowBottomNavigation=findViewById(R.id.bottomnavigation);
+//        meowBottomNavigation=findViewById(R.id.bottomnavigation);
 //
-
+        layoutone= findViewById(R.id.mainlay);
+        layounttwo = findViewById(R.id.secoundrylay);
         newslist = findViewById(R.id.newsCard);
         educationlist = findViewById(R.id.education);
         fireservicelist = findViewById(R.id.fireservice);
@@ -66,13 +76,48 @@ public class MainActivity extends AppCompatActivity {
         emagencynumberlst = findViewById(R.id.emargencynumber);
         resultlist = findViewById(R.id.result);
         songotonlist = findViewById(R.id.songgoton);
-        esebalist = findViewById(R.id.dokan);
-        postcodelist = findViewById(R.id.postcode);
-        famouslist = findViewById(R.id.bikhatomanush);
-        garivaralist=findViewById(R.id.garibara);
-        history = findViewById(R.id.itihash);
+//        esebalist = findViewById(R.id.dokan);
+//        postcodelist = findViewById(R.id.postcode);
+//        famouslist = findViewById(R.id.bikhatomanush);
+//        garivaralist=findViewById(R.id.garibara);
+//        history = findViewById(R.id.itihash);
         mAdView = findViewById(R.id.adView);
+        secoundlaybtn = findViewById(R.id.secoundlaybutton);
+//        Play = findViewById(R.id.play);
+        recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
 
+        // Initialize the menu item list
+        menuItemList = new ArrayList<>();
+        menuItemList.add(new MenuItemModel("Item 1", R.drawable.download));  // Add actual image resources
+//        menuItemList.add(new MenuAdapter.MenuItemModel("Item 2", R.drawable.item_image_2));
+//        menuItemList.add(new MenuAdapter.MenuItemModel("Item 3", R.drawable.item_image_3));
+
+        // Set up the RecyclerView with LayoutManager and Adapter
+        recyclerViewMenu.setLayoutManager(new LinearLayoutManager(this)); // Linear layout (vertical scrolling)
+        menuAdapter = new MenuAdapter(this, menuItemList);  // Pass context and data to the adapter
+        recyclerViewMenu.setAdapter(menuAdapter);
+
+        // Set an item click listener (optional)
+//        menuAdapter.setOnItemClickListener((position) -> {
+//            Toast.makeText(MainActivity.this, "Clicked item: " + menuItemList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+//        });s
+        Play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Web.url="https://ea.freehit.eu/";
+                Intent intent= new Intent(getApplicationContext(), Web.class);
+                startActivity(intent);
+            }
+        });
+
+        secoundlaybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Web.url="https://ea.freehit.eu/";
+                Intent intent= new Intent(getApplicationContext(), Web.class);
+                startActivity(intent);
+            }
+        });
 
         //ad
         marq.setSelected(true);
@@ -97,9 +142,31 @@ public class MainActivity extends AppCompatActivity {
         //top bar date and time
 //        String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
 //        dateTime.setText(currentDateTimeString);
-        meowBottomNavigation.show(1,true);
-        meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home_24));
-        meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_baseline_add_circle_24));
+//        meowBottomNavigation.show(1,true);
+//        meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home_24));
+//        meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_baseline_add_circle_24));
+
+
+//      meowBottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
+//          @Override
+//          public Unit invoke(MeowBottomNavigation.Model model) {
+//              return null;
+//          }
+//      });
+//      meowBottomNavigation.setOnShowListener(new Function1<MeowBottomNavigation.Model, Unit>() {
+//          @Override
+//          public Unit invoke(MeowBottomNavigation.Model model) {
+//              if (model.getId()==1){
+//                  layoutone.setVisibility(View.VISIBLE);
+//                  layounttwo.setVisibility(View.GONE);
+//              }
+//              else{
+//                  layounttwo.setVisibility(View.VISIBLE);
+//layoutone.setVisibility(View.GONE);
+//              }
+//              return null;
+//          }
+//      });
 
         temparature.setOnClickListener(view -> {
 //                mInterstitialAd.show(MainActivity.this);
@@ -109,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
         resultlist.setOnClickListener(view -> {
-            Web.url ="https://sresult.bise-ctg.gov.bd/individual/";
+            Web.url ="http://www.educationboardresults.gov.bd/";
             Intent intent= new Intent(getApplicationContext(), Web.class);
             startActivity(intent);
         });
