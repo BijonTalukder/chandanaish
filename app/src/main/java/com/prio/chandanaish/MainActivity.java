@@ -3,16 +3,20 @@ package com.prio.chandanaish;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 //import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -27,8 +31,12 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -50,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewMenu;
     private MenuAdapter menuAdapter;
-    private List<MenuItemModel> menuItemList;
+    private List<Map<String, Object>> menuItemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +93,23 @@ public class MainActivity extends AppCompatActivity {
         secoundlaybtn = findViewById(R.id.secoundlaybutton);
 //        Play = findViewById(R.id.play);
         recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
+        RecyclerView recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 4);  // 4 columns
+        recyclerViewMenu.setLayoutManager(layoutManager);
+
+// Initialize the adapter and set it to RecyclerView
+        MenuAdapter adapter = new MenuAdapter(this, menuItemList);
+        recyclerViewMenu.setAdapter(adapter);
 
         // Initialize the menu item list
         menuItemList = new ArrayList<>();
-        menuItemList.add(new MenuItemModel("Item 1", R.drawable.download));  // Add actual image resources
+//        menuItemList.add(new MenuItemModel("Item 1", R.drawable.download));  // Add actual image resources
+
+//        menuItemList.add(new MenuItemModel("Item 1", R.drawable.download));
+//
+//
+//        menuItemList.add(new MenuItemModel("Item 1", R.drawable.download));
+//        menuItemList.add(new MenuItemModel("Item 1", R.drawable.download));
 //        menuItemList.add(new MenuAdapter.MenuItemModel("Item 2", R.drawable.item_image_2));
 //        menuItemList.add(new MenuAdapter.MenuItemModel("Item 3", R.drawable.item_image_3));
 
@@ -97,27 +118,79 @@ public class MainActivity extends AppCompatActivity {
         menuAdapter = new MenuAdapter(this, menuItemList);  // Pass context and data to the adapter
         recyclerViewMenu.setAdapter(menuAdapter);
 
+
+        //make dynamic-------------------------------
+        String apiUrl = "http://192.168.1.11:5000/api/v1/services"; // Replace with your actual URL
+Toast.makeText(this,apiUrl,Toast.LENGTH_LONG).show();
+        // Use VolleyRequest to send the GET request
+        // Use VolleyRequest to send the GET request
+        VolleyRequest.sendGetRequest(MainActivity.this, apiUrl, new VolleyRequest.VolleyCallback() {
+            @Override
+            public void onSuccess(List<Map<String, Object>> parsedData) {
+                // Show a Toast from the activity context
+                Toast.makeText(MainActivity.this, "API call successful", Toast.LENGTH_LONG).show();
+
+                // Update the menu adapter with the new data
+                menuAdapter.updateMenuItems(parsedData);
+
+                // Iterate through the parsed data (for debugging purposes)
+                for (Map<String, Object> item : parsedData) {
+                    String id = (String) item.get("id");
+                    String title = (String) item.get("title");
+                    boolean status = (boolean) item.get("status");
+                    String imageUrl = (String) item.get("imageUrl");
+
+                    // Log the parsed data
+                    Log.d("Parsed Data", "ID: " + id + ", Title: " + title + ", Status: " + status + ", Image URL: " + imageUrl);
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // Set an item click listener (optional)
 //        menuAdapter.setOnItemClickListener((position) -> {
 //            Toast.makeText(MainActivity.this, "Clicked item: " + menuItemList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
 //        });s
-        Play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Web.url="https://ea.freehit.eu/";
-                Intent intent= new Intent(getApplicationContext(), Web.class);
-                startActivity(intent);
-            }
-        });
-
-        secoundlaybtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Web.url="https://ea.freehit.eu/";
-                Intent intent= new Intent(getApplicationContext(), Web.class);
-                startActivity(intent);
-            }
-        });
+//        Play.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Web.url="https://ea.freehit.eu/";
+//                Intent intent= new Intent(getApplicationContext(), Web.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        secoundlaybtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Web.url="https://ea.freehit.eu/";
+//                Intent intent= new Intent(getApplicationContext(), Web.class);
+//                startActivity(intent);
+//            }
+//        });
 
         //ad
         marq.setSelected(true);
@@ -175,134 +248,134 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
 
         });
-        resultlist.setOnClickListener(view -> {
-            Web.url ="http://www.educationboardresults.gov.bd/";
-            Intent intent= new Intent(getApplicationContext(), Web.class);
-            startActivity(intent);
-        });
-        newslist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // mInterstitialAd.show(MainActivity.this);
-                ItemList.role="news";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-                intent.putExtra("key","news");
-                startActivity(intent);
-            }
-        });
-        educationlist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ItemList.role="education";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-                intent.putExtra("key","education");
-                startActivity(intent);
-
-            }
-        });
-        fireservicelist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ItemList.role="fire";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-                intent.putExtra("key","fire");
-                startActivity(intent);
-
-            }
-        });
-        doctorlist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ItemList.role="doctor";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-                intent.putExtra("key","doctor");
-                startActivity(intent);
-
-            }
-        });
-       bloodlist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ItemList.role="blood";
-                Intent intent = new Intent(getApplicationContext(), Blood.class);
-                intent.putExtra("key","blood");
-                startActivity(intent);
-
-            }
-        });
-        hospitallist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ItemList.role="hospital";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-                intent.putExtra("key","hospital");
-                startActivity(intent);
-
-            }
-        });
-        policelist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ItemList.role="police";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-                intent.putExtra("key","police");
-                startActivity(intent);
-
-            }
-        });
-        emagencynumberlst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                 ItemList.role="emargency";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-                intent.putExtra("key","emargency");
-                startActivity(intent);
-
-            }
-        });
-        postcodelist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ItemList.role="postcode";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-                intent.putExtra("key","postcode");
-                startActivity(intent);
-
-            }
-        });
-        visitedplacelist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ItemList.role="visitedplace";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-                intent.putExtra("key","visitedplace");
-                startActivity(intent);
-            }
-        });
-        famouslist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ItemList.role="famousman";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-                intent.putExtra("key","famousman");
-                startActivity(intent);
-
-            }
-        });
-        esebalist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ItemList.role="dokan";
-                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-                intent.putExtra("key","dokan");
-                startActivity(intent);
-
-            }
-        });
-        history.setOnClickListener(view -> {
-            Intent intent = new Intent(this,itihash.class);
-            startActivity(intent);
-        });
+//        resultlist.setOnClickListener(view -> {
+//            Web.url ="http://www.educationboardresults.gov.bd/";
+//            Intent intent= new Intent(getApplicationContext(), Web.class);
+//            startActivity(intent);
+//        });
+//        newslist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // mInterstitialAd.show(MainActivity.this);
+//                ItemList.role="news";
+//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+//                intent.putExtra("key","news");
+//                startActivity(intent);
+//            }
+//        });
+//        educationlist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ItemList.role="education";
+//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+//                intent.putExtra("key","education");
+//                startActivity(intent);
+//
+//            }
+//        });
+//        fireservicelist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ItemList.role="fire";
+//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+//                intent.putExtra("key","fire");
+//                startActivity(intent);
+//
+//            }
+//        });
+//        doctorlist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ItemList.role="doctor";
+//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+//                intent.putExtra("key","doctor");
+//                startActivity(intent);
+//
+//            }
+//        });
+//       bloodlist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ItemList.role="blood";
+//                Intent intent = new Intent(getApplicationContext(), Blood.class);
+//                intent.putExtra("key","blood");
+//                startActivity(intent);
+//
+//            }
+//        });
+//        hospitallist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ItemList.role="hospital";
+//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+//                intent.putExtra("key","hospital");
+//                startActivity(intent);
+//
+//            }
+//        });
+//        policelist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ItemList.role="police";
+//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+//                intent.putExtra("key","police");
+//                startActivity(intent);
+//
+//            }
+//        });
+//        emagencynumberlst.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                 ItemList.role="emargency";
+//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+//                intent.putExtra("key","emargency");
+//                startActivity(intent);
+//
+//            }
+//        });
+//        postcodelist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ItemList.role="postcode";
+//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+//                intent.putExtra("key","postcode");
+//                startActivity(intent);
+//
+//            }
+//        });
+//        visitedplacelist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ItemList.role="visitedplace";
+//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+//                intent.putExtra("key","visitedplace");
+//                startActivity(intent);
+//            }
+//        });
+//        famouslist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ItemList.role="famousman";
+//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+//                intent.putExtra("key","famousman");
+//                startActivity(intent);
+//
+//            }
+//        });
+//        esebalist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ItemList.role="dokan";
+//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
+//                intent.putExtra("key","dokan");
+//                startActivity(intent);
+//
+//            }
+//        });
+//        history.setOnClickListener(view -> {
+//            Intent intent = new Intent(this,itihash.class);
+//            startActivity(intent);
+//        });
 
 
     }
