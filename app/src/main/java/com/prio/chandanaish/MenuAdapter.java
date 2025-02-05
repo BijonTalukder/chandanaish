@@ -1,11 +1,13 @@
 package com.prio.chandanaish;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +31,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
     }
     public void updateMenuItems(List<Map<String, Object>> newMenuItems) {
         this.menuItems = newMenuItems;
+        notifyDataSetChanged();
 //        notifyDataSetChanged();
     }
     @NonNull
@@ -44,11 +47,15 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
 
         String title = (String) item.get("title");
         String imageUrl = (String) item.get("imageUrl");
-
+        Toast.makeText(context, "from menu adapter: " + title, Toast.LENGTH_LONG).show();
         holder.cardText.setText(title);
 
+        String id = (String) item.get("id");
 
         holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ItemList.class);
+            intent.putExtra("item", id); // Send data to new screen
+            context.startActivity(intent);
             // Handle click action
         });
     }
@@ -65,7 +72,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cardText = itemView.findViewById(R.id.cardText);
-            cardImage = itemView.findViewById(R.id.cardImage);
+//            cardImage = itemView.findViewById(R.id.cardImage);
         }
     }
 

@@ -84,43 +84,20 @@ public class MainActivity extends AppCompatActivity {
         emagencynumberlst = findViewById(R.id.emargencynumber);
         resultlist = findViewById(R.id.result);
         songotonlist = findViewById(R.id.songgoton);
-//        esebalist = findViewById(R.id.dokan);
-//        postcodelist = findViewById(R.id.postcode);
-//        famouslist = findViewById(R.id.bikhatomanush);
-//        garivaralist=findViewById(R.id.garibara);
-//        history = findViewById(R.id.itihash);
         mAdView = findViewById(R.id.adView);
         secoundlaybtn = findViewById(R.id.secoundlaybutton);
-//        Play = findViewById(R.id.play);
         recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
-        RecyclerView recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 4);  // 4 columns
-        recyclerViewMenu.setLayoutManager(layoutManager);
 
-// Initialize the adapter and set it to RecyclerView
-        MenuAdapter adapter = new MenuAdapter(this, menuItemList);
-        recyclerViewMenu.setAdapter(adapter);
-
-        // Initialize the menu item list
+        recyclerViewMenu.setLayoutManager(new GridLayoutManager(this, 4));
+//        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+//        recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+        // Initialize List & Adapter
         menuItemList = new ArrayList<>();
-//        menuItemList.add(new MenuItemModel("Item 1", R.drawable.download));  // Add actual image resources
-
-//        menuItemList.add(new MenuItemModel("Item 1", R.drawable.download));
-//
-//
-//        menuItemList.add(new MenuItemModel("Item 1", R.drawable.download));
-//        menuItemList.add(new MenuItemModel("Item 1", R.drawable.download));
-//        menuItemList.add(new MenuAdapter.MenuItemModel("Item 2", R.drawable.item_image_2));
-//        menuItemList.add(new MenuAdapter.MenuItemModel("Item 3", R.drawable.item_image_3));
-
-        // Set up the RecyclerView with LayoutManager and Adapter
-        recyclerViewMenu.setLayoutManager(new LinearLayoutManager(this)); // Linear layout (vertical scrolling)
-        menuAdapter = new MenuAdapter(this, menuItemList);  // Pass context and data to the adapter
+        menuAdapter = new MenuAdapter(this, menuItemList);
         recyclerViewMenu.setAdapter(menuAdapter);
 
 
-        //make dynamic-------------------------------
-        String apiUrl = "http://192.168.1.11:5000/api/v1/services"; // Replace with your actual URL
+        String apiUrl = "https://backend-eight-lake-96.vercel.app/api/v1/services"; // Replace with your actual URL
 Toast.makeText(this,apiUrl,Toast.LENGTH_LONG).show();
         // Use VolleyRequest to send the GET request
         // Use VolleyRequest to send the GET request

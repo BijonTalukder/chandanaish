@@ -1,46 +1,35 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="0dp"
+<androidx.cardview.widget.CardView android:id="@+id/education"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp"
+    app:cardCornerRadius="5dp"
+    android:elevation="5dp"
+    android:layout_margin="5dp"
     android:clickable="true"
-    android:focusable="true"
-    android:minWidth="48dp"
-    android:minHeight="48dp"
-    android:layout_weight="1"
-    android:elevation="5dp">
+    android:foreground="?android:attr/selectableItemBackground"
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <!-- Lottie Animation View -->
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animationView"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            android:visibility="gone"/>  <!-- Initially hidden -->
-
-        <!-- Image View -->
         <ImageView
             android:id="@+id/cardImage"
-            android:layout_width="match_parent"
+            android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_gravity="center_horizontal"
-            android:visibility="gone"/>  <!-- Initially hidden -->
+            android:src="@drawable/edu" />
 
         <TextView
             android:id="@+id/cardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="নিউজ"
-            android:textSize="12dp"
-            android:textStyle="bold"
-            android:padding="3dp"
+            android:gravity="center"
+            android:text="শিক্ষা প্রতিষ্টান"
             android:textColor="@color/black"
-            android:layout_gravity="center_horizontal"/>
+            android:textSize="14sp"
+            android:textStyle="bold"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
