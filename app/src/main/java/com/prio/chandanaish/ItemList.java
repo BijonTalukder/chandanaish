@@ -81,8 +81,8 @@ public class ItemList extends AppCompatActivity {
 
 
 
-                        Toast.makeText(ItemList.this, data.get("title").toString()+"ITem" +
-                                "list MAin call", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(ItemList.this, data.get("title").toString()+"ITem" +
+//                                "list MAin call", Toast.LENGTH_SHORT).show();
 
 
                         hashMap.put("title", data.get("title").toString());

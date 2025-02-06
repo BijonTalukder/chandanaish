@@ -98,28 +98,28 @@ public class MainActivity extends AppCompatActivity {
 
 
         String apiUrl = "https://backend-eight-lake-96.vercel.app/api/v1/services"; // Replace with your actual URL
-Toast.makeText(this,apiUrl,Toast.LENGTH_LONG).show();
+//Toast.makeText(this,apiUrl,Toast.LENGTH_LONG).show();
         // Use VolleyRequest to send the GET request
         // Use VolleyRequest to send the GET request
         VolleyRequest.sendGetRequest(MainActivity.this, apiUrl, new VolleyRequest.VolleyCallback() {
             @Override
             public void onSuccess(List<Map<String, Object>> parsedData) {
                 // Show a Toast from the activity context
-                Toast.makeText(MainActivity.this, "API call successful", Toast.LENGTH_LONG).show();
+//                Toast.makeText(MainActivity.this, "API call successful", Toast.LENGTH_LONG).show();
 
                 // Update the menu adapter with the new data
                 menuAdapter.updateMenuItems(parsedData);
 
                 // Iterate through the parsed data (for debugging purposes)
-                for (Map<String, Object> item : parsedData) {
-                    String id = (String) item.get("id");
-                    String title = (String) item.get("title");
-                    boolean status = (boolean) item.get("status");
-                    String imageUrl = (String) item.get("imageUrl");
-
-                    // Log the parsed data
-                    Log.d("Parsed Data", "ID: " + id + ", Title: " + title + ", Status: " + status + ", Image URL: " + imageUrl);
-                }
+//                for (Map<String, Object> item : parsedData) {
+//                    String id = (String) item.get("id");
+//                    String title = (String) item.get("title");
+//                    boolean status = (boolean) item.get("status");
+//                    String imageUrl = (String) item.get("imageUrl");
+//
+//                    // Log the parsed data
+////                    Log.d("Parsed Data", "ID: " + id + ", Title: " + title + ", Status: " + status + ", Image URL: " + imageUrl);
+//                }
             }
         });
 

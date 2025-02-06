@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 import java.util.Map;
 
@@ -50,11 +52,24 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         Toast.makeText(context, "from menu adapter: " + title, Toast.LENGTH_LONG).show();
         holder.cardText.setText(title);
 
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            Picasso.get()
+                    .load(imageUrl)
+                    .fit()
+                    .into(holder.cardImage);
+        } else {
+//            holder.cardImage.setImageResource(R.drawable.default_image); // Use your local image here
+        };
+//        holder.cardImage.setVisibility(View.GONE); // Hide ImageView
+//        holder.lottieAnimationView.setVisibility(View.VISIBLE); // Show Lottie
+//        holder.lottieAnimationView.setAnimation(R.raw.loading_animation); // Replace with your Lottie JSON file
+//        holder.lottieAnimationView.playAnimation();
+
         String id = (String) item.get("id");
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ItemList.class);
-            intent.putExtra("item", id); // Send data to new screen
+            intent.putExtra("item", id);
             context.startActivity(intent);
             // Handle click action
         });
