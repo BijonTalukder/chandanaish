@@ -220,9 +220,9 @@ public class MainActivity extends AppCompatActivity {
 
         temparature.setOnClickListener(view -> {
 //                mInterstitialAd.show(MainActivity.this);
-            Web.url="https://justweather.org/Bangladesh/Chittagong/Chittagong/Chandanaish/Hourly/";
-            Intent intent= new Intent(getApplicationContext(), Web.class);
-            startActivity(intent);
+//            Web.url="https://justweather.org/Bangladesh/Chittagong/Chittagong/Chandanaish/Hourly/";
+//            Intent intent= new Intent(getApplicationContext(), Web.class);
+//            startActivity(intent);
 
         });
 //        resultlist.setOnClickListener(view -> {

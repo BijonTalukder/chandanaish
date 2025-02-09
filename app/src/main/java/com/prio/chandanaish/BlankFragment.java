@@ -59,11 +59,11 @@ ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
         public View getView(int i, View view, ViewGroup viewGroup) {
             LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view2 = layoutInflater.inflate(R.layout.demo_list_view_call,viewGroup,false);
-            TextView fireservicename = view2.findViewById(R.id.textitemdemo1);
-            TextView fireservicenumber = view2.findViewById(R.id.number);
+//            TextView fireservicename = view2.findViewById(R.id.textitemdemo1);
+//            TextView fireservicenumber = view2.findViewById(R.id.number);
             HashMap<String,String> hashMap1 = arrayList.get(i);
-            String fireservicenamevalue = hashMap1.get("name");
-            fireservicename.setText(fireservicenamevalue);
+//            String fireservicenamevalue = hashMap1.get("name");
+//            fireservicename.setText(fireservicenamevalue);
 
             return view2;
         }

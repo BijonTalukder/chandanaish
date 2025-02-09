@@ -1,6 +1,6 @@
 package com.prio.chandanaish;
 
-import static com.prio.chandanaish.Web.url;
+//import static com.prio.chandanaish.Web.url;
 
 import androidx.appcompat.app.AppCompatActivity;
 
