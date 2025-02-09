@@ -125,7 +125,7 @@ public class ListViewBaseAdapter extends BaseAdapter {
                 view = inflater.inflate(R.layout.demoimage, viewGroup, false);
             }
 
-            LinearLayout layout = view.findViewById(R.id.demoimageimageview);
+            LinearLayout layout = view.findViewById(R.id.demoimage);
             ImageView imageView = view.findViewById(R.id.demoimageimageview);
 
             String imageUrl = itemData.get("imageUrl");

@@ -35,10 +35,10 @@ public class Web extends AppCompatActivity {
         webSettings.setDatabaseEnabled(true);
 //        webSettings.setAppCacheEnabled(true);
 //        webSettings.setAppCachePath(getCacheDir().getAbsolutePath());
-        webSettings.setRenderPriority(WebSettings.RenderPriority.HIGH);
+//        webSettings.setRenderPriority(WebSettings.RenderPriority.HIGH);
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        webSettings.setEnableSmoothTransition(true);
-        webSettings.setSavePassword(false);
+//        webSettings.setEnableSmoothTransition(true);
+//        webSettings.setSavePassword(false);
         webSettings.setSaveFormData(false);
         webSettings.setSupportZoom(false);
         webSettings.setBuiltInZoomControls(false);
