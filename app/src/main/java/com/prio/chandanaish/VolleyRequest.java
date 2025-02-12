@@ -77,6 +77,28 @@ public class VolleyRequest {
             parsedData.put("title", item.getString("title"));
             parsedData.put("status", item.getBoolean("status"));
             parsedData.put("imageUrl", item.optString("imageUrl", ""));  // Default empty if no image
+            parsedData.put("shortDescription", item.optString("shortDescription", ""));
+            parsedData.put("description", item.optString("description", ""));
+            parsedData.put("phoneNumber", item.optString("phoneNumber", ""));
+            parsedData.put("type", item.optString("type", ""));
+            parsedData.put("isClikableLink", item.optBoolean("isClikableLink", false)); // Default to false if missing
+            parsedData.put("url", item.optString("url", ""));
+            parsedData.put("isInternalUrl", item.optBoolean("isInternalUrl", false));
+
+
+//                         String
+//            shortDescription  String?
+//            description       String?
+//            phoneNumber       String?
+//            type              String
+//                        Boolean? @default(true)
+//                isClikableLink Boolean @default(false)
+//                url               String
+//                isInternalUrl     Boolean
+//                          String
+//                dynamicFields     Json?
+
+
 
         } catch (Exception e) {
             Log.e(TAG, "Error parsing item: " + e.toString());

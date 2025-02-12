@@ -20,22 +20,18 @@ import java.util.Map;
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> {
 
     private final Context context;
-
-
     private List<Map<String, Object>> menuItems;
-// Data List
-
-
 
     public MenuAdapter(Context context, List<Map<String, Object>> menuItems) {
         this.context = context;
         this.menuItems = menuItems;
     }
+
     public void updateMenuItems(List<Map<String, Object>> newMenuItems) {
         this.menuItems = newMenuItems;
         notifyDataSetChanged();
-//        notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,11 +41,14 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        if (menuItems == null || menuItems.get(position) == null) return;
         Map<String, Object> item = menuItems.get(position);
 
         String title = (String) item.get("title");
         String imageUrl = (String) item.get("imageUrl");
-        Toast.makeText(context, "from menu adapter: " + title, Toast.LENGTH_LONG).show();
+        String url = (String) item.get("url");
+        boolean isClikableLink = Boolean.TRUE.equals(item.get("isClikableLink"));  // Safe handling
+        String id = (String) item.get("id");
         holder.cardText.setText(title);
 
         if (imageUrl != null && !imageUrl.isEmpty()) {
@@ -58,26 +57,24 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
                     .fit()
                     .into(holder.cardImage);
         } else {
-//            holder.cardImage.setImageResource(R.drawable.default_image); // Use your local image here
-        };
-//        holder.cardImage.setVisibility(View.GONE); // Hide ImageView
-//        holder.lottieAnimationView.setVisibility(View.VISIBLE); // Show Lottie
-//        holder.lottieAnimationView.setAnimation(R.raw.loading_animation); // Replace with your Lottie JSON file
-//        holder.lottieAnimationView.playAnimation();
+            holder.cardImage.setImageResource(R.drawable.pppp); // Use default image
+        }
 
-        String id = (String) item.get("id");
+        Toast.makeText(context,id+"id check",Toast.LENGTH_LONG).show();
 
+        // Set click listener
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ItemList.class);
-            intent.putExtra("item", id);
+            Toast.makeText(context,id+"id check",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(context, isClikableLink ? Web.class : ItemList.class);
+            intent.putExtra("id",id);
+            intent.putExtra("url", url);
             context.startActivity(intent);
-            // Handle click action
         });
     }
 
     @Override
     public int getItemCount() {
-        return menuItems.size();  // Return actual item count
+        return menuItems.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -87,8 +84,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cardText = itemView.findViewById(R.id.cardText);
-//            cardImage = itemView.findViewById(R.id.cardImage);
+            cardImage = itemView.findViewById(R.id.cardImage);
         }
     }
-
 }
