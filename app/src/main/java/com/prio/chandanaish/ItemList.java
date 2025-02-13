@@ -57,7 +57,7 @@ public class ItemList extends AppCompatActivity {
 
         // Construct API URL properly
         String apiUrl = "https://backend-eight-lake-96.vercel.app/api/v1/services-list/services/" + itemId;
-        Toast.makeText(this, apiUrl, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, apiUrl, Toast.LENGTH_LONG).show();
         VolleyRequest.sendGetRequest(ItemList.this, apiUrl, new VolleyRequest.VolleyCallback() {
             @Override
             public void onSuccess(List<Map<String, Object>> parsedData) {
@@ -66,9 +66,9 @@ public class ItemList extends AppCompatActivity {
                     for (Map<String, Object> data : parsedData) {
                         HashMap<String, String> hashMap = new HashMap<>();
 
-                        Toast.makeText(ItemList.this, "data"+data, Toast.LENGTH_LONG).show();
+//                        Toast.makeText(ItemList.this, "data"+data, Toast.LENGTH_LONG).show();
 
-                     System.out.println("data"+data);
+//                     System.out.println("data"+data);
 
                         hashMap.put("title", getSafeString(data, "title", "Unknown Title"));
                         hashMap.put("description", getSafeString(data, "description", "No Description"));

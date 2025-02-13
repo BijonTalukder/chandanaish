@@ -40,6 +40,16 @@
                     android:textColor="@color/primary_text"
                     android:textSize="20sp"
                     android:visibility="gone" />
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:fontFamily="monospace"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/textView1"
@@ -47,10 +57,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="6dp"
 
-                    android:text="zxcx"
+                    android:text=""
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -63,15 +73,7 @@
                     android:textSize="14sp"
                     android:visibility="gone" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
 
-                    android:text=""
-                    android:textColor="@color/secondary_text"
-                    android:textSize="16sp"
-                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -79,7 +81,7 @@
                 android:id="@+id/callSection"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:gravity="center"
                 android:visibility="gone">
 

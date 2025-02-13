@@ -7,11 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -58,11 +60,11 @@ public class ListViewBaseAdapter extends BaseAdapter {
                     convertView = inflater.inflate(R.layout.doctordemolist, parent, false);
                     holder = new ViewHolder(convertView, type);
                     break;
-                case "sectionCardThree":
+                case "sectionCardFour":
                     convertView = inflater.inflate(R.layout.demoimage, parent, false);
                     holder = new ViewHolder(convertView, type);
                     break;
-                case "touristSpot":
+                case "sectionCardThree":
                     convertView = inflater.inflate(R.layout.tourist_spot, parent, false);
                     holder = new ViewHolder(convertView, type);
                     break;
@@ -78,6 +80,7 @@ public class ListViewBaseAdapter extends BaseAdapter {
 
         // Bind data based on type
         HashMap<String, String> itemData = dataList.get(position);
+        assert type != null;
         bindViewHolder(holder, itemData, type);
 
         return convertView;
@@ -88,15 +91,28 @@ public class ListViewBaseAdapter extends BaseAdapter {
                 setTextIfNotNull(holder.title, itemData.get("title"));
                 setTextIfNotNull(holder.shortDescription, itemData.get("shortDescription"));
                 setTextIfNotNull(holder.description, itemData.get("description"));
+                handlePhoneNumber(holder, itemData,type);
                 break;
             case "sectionCardTwo":
                 setTextIfNotNull(holder.title, itemData.get("title"));
                 setTextIfNotNull(holder.shortDescription, itemData.get("shortDescription"));
                 setTextIfNotNull(holder.description, itemData.get("description"));
-                handlePhoneNumber(holder, itemData);
+                handlePhoneNumber(holder, itemData,type);
                 break;
             case "sectionCardThree":
-            case "touristSpot":
+                setTextIfNotNull(holder.title, itemData.get("title"));
+                setTextIfNotNull(holder.shortDescription, itemData.get("shortDescription"));
+                setTextIfNotNull(holder.description, itemData.get("description"));
+
+
+                                 if (holder.imageView != null) {
+                    String imageUrl = itemData.get("imageUrl");
+                    Picasso.get().load(imageUrl).fit().into(holder.imageView);
+                }
+
+
+
+            case "sectionCardFour":
                 if (holder.imageView != null) {
                     String imageUrl = itemData.get("imageUrl");
                     Picasso.get().load(imageUrl).fit().into(holder.imageView);
@@ -104,12 +120,16 @@ public class ListViewBaseAdapter extends BaseAdapter {
                 break;
         }
     }
-    private void handlePhoneNumber(ViewHolder holder, HashMap<String, String> itemData) {
+    private void handlePhoneNumber(ViewHolder holder, HashMap<String, String> itemData,String type) {
         String phoneNumber = itemData.get("phoneNumber");
+
+
+        Toast.makeText(context, "phoneNumber "+phoneNumber, Toast.LENGTH_SHORT).show();
         if (phoneNumber != null && !phoneNumber.isEmpty()) {
+            holder.call.setVisibility(View.VISIBLE);
             holder.call.setText(phoneNumber);
             holder.callSection.setVisibility(View.VISIBLE);
-            holder.call.setOnClickListener(v -> {
+            holder.callSection.setOnClickListener(v -> {
                 Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNumber));
                 context.startActivity(dialIntent);
             });
@@ -121,16 +141,34 @@ public class ListViewBaseAdapter extends BaseAdapter {
         TextView title, shortDescription, description, call;
         ImageView imageView;
         LinearLayout callSection;
+        ShapeableImageView shapeableImageView;
+        Button button;
 
         ViewHolder(View view, String type) {
-            if (type.equals("sectionCardOne") || type.equals("sectionCardTwo")) {
+            if (type.equals("sectionCardOne")) {
                 title = view.findViewById(R.id.textView);
                 shortDescription = view.findViewById(R.id.textView1);
                 description = view.findViewById(R.id.textView2);
                 call = view.findViewById(R.id.textView3);
                 callSection = view.findViewById(R.id.callSection);
-            } else if (type.equals("sectionCardThree") || type.equals("touristSpot")) {
-                imageView = view.findViewById(R.id.demoimageimageview);
+            }
+
+            else if(type.equals("sectionCardTwo")) {
+
+                title=view.findViewById(R.id.Name);
+                shortDescription=view.findViewById(R.id.spacalist);
+                description=view.findViewById(R.id.doctordesignation);
+                call=view.findViewById(R.id.doctorNumber);
+                callSection=view.findViewById(R.id.callSectionDoctor);
+                shapeableImageView=view.findViewById(R.id.doctorImage);
+            }
+            else if (type.equals("sectionCardThree")) {
+                imageView = view.findViewById(R.id.tourist_spot_image);
+                title=view.findViewById(R.id.tourist_spot_title);
+                shortDescription=view.findViewById(R.id.tourist_spot_location);
+                description=view.findViewById(R.id.tourist_spot_description);
+                button=view.findViewById(R.id.tourist_spot_button);
+
             }
         }
     }
@@ -222,7 +260,7 @@ public class ListViewBaseAdapter extends BaseAdapter {
 
     private void setTextIfNotNull(TextView textView, String text) {
         if (text != null) {
-            Toast.makeText(context, "text "+text, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "text "+text, Toast.LENGTH_SHORT).show();
             textView.setText(text);
             textView.setVisibility(View.VISIBLE);
         } else {

@@ -60,11 +60,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
             holder.cardImage.setImageResource(R.drawable.pppp); // Use default image
         }
 
-        Toast.makeText(context,id+"id check",Toast.LENGTH_LONG).show();
+//        Toast.makeText(context,id+"id check",Toast.LENGTH_LONG).show();
 
         // Set click listener
         holder.itemView.setOnClickListener(v -> {
-            Toast.makeText(context,id+"id check",Toast.LENGTH_LONG).show();
+//            Toast.makeText(context,id+"id check",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(context, isClikableLink ? Web.class : ItemList.class);
             intent.putExtra("id",id);
             intent.putExtra("url", url);
