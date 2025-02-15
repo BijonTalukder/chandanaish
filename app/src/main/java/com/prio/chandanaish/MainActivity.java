@@ -71,21 +71,21 @@ public class MainActivity extends AppCompatActivity {
 //        meowBottomNavigation=findViewById(R.id.bottomnavigation);
 //
         layoutone= findViewById(R.id.mainlay);
-        layounttwo = findViewById(R.id.secoundrylay);
-        newslist = findViewById(R.id.newsCard);
-        educationlist = findViewById(R.id.education);
-        fireservicelist = findViewById(R.id.fireservice);
-        doctorlist = findViewById(R.id.doctor);
-        bloodlist = findViewById(R.id.blood);
-        hospitallist = findViewById(R.id.hospital);
-        policelist = findViewById(R.id.police);
-        diagonesticlist= findViewById(R.id.daigonestic);
-        visitedplacelist = findViewById(R.id.dorshoniyostan);
-        emagencynumberlst = findViewById(R.id.emargencynumber);
-        resultlist = findViewById(R.id.result);
-        songotonlist = findViewById(R.id.songgoton);
-        mAdView = findViewById(R.id.adView);
-        secoundlaybtn = findViewById(R.id.secoundlaybutton);
+//        layounttwo = findViewById(R.id.secoundrylay);
+//        newslist = findViewById(R.id.newsCard);
+//        educationlist = findViewById(R.id.education);
+//        fireservicelist = findViewById(R.id.fireservice);
+//        doctorlist = findViewById(R.id.doctor);
+//        bloodlist = findViewById(R.id.blood);
+//        hospitallist = findViewById(R.id.hospital);
+//        policelist = findViewById(R.id.police);
+//        diagonesticlist= findViewById(R.id.daigonestic);
+//        visitedplacelist = findViewById(R.id.dorshoniyostan);
+//        emagencynumberlst = findViewById(R.id.emargencynumber);
+//        resultlist = findViewById(R.id.result);
+//        songotonlist = findViewById(R.id.songgoton);
+//        mAdView = findViewById(R.id.adView);
+//        secoundlaybtn = findViewById(R.id.secoundlaybutton);
         recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
 
         recyclerViewMenu.setLayoutManager(new GridLayoutManager(this, 4));
@@ -177,8 +177,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        loadFullScreenad();
+//        mAdView.loadAd(adRequest);
+//        loadFullScreenad();
 
 
 
