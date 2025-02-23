@@ -66,9 +66,6 @@ public class ItemList extends AppCompatActivity {
                     for (Map<String, Object> data : parsedData) {
                         HashMap<String, String> hashMap = new HashMap<>();
 
-//                        Toast.makeText(ItemList.this, "data"+data, Toast.LENGTH_LONG).show();
-
-//                     System.out.println("data"+data);
 
                         hashMap.put("title", getSafeString(data, "title", "Unknown Title"));
                         hashMap.put("description", getSafeString(data, "description", "No Description"));
@@ -77,18 +74,17 @@ public class ItemList extends AppCompatActivity {
                         hashMap.put("phoneNumber", getSafeString(data, "phoneNumber", "No Phone"));
                         hashMap.put("type", getSafeString(data, "type", "N/A"));
                         hashMap.put("status", getSafeString(data, "status", "false"));
+                        hashMap.put("isClikableLink", getSafeString(data, "isClikableLink", "false"));
+
+
                         hashMap.put("url", getSafeString(data, "url", ""));
                         hashMap.put("imageUrl", getSafeString(data, "imageUrl", ""));
                         arrayList.add(hashMap);
                     }
-//                    arrayList.add(hashMap);
+//
                     ListViewBaseAdapter adapter = new ListViewBaseAdapter(ItemList.this, arrayList);
                     listView.setAdapter(adapter);
-//
-//                    // Set adapter with updated data
-//                    ListViewBaseAdapter adapter = new ListViewBaseAdapter(ItemList.this
-//                            ,arrayList);
-//                    listView.setAdapter(adapter);
+
 
                 }
             }

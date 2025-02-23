@@ -84,6 +84,8 @@ public class VolleyRequest {
             parsedData.put("isClikableLink", item.optBoolean("isClikableLink", false)); // Default to false if missing
             parsedData.put("url", item.optString("url", ""));
             parsedData.put("isInternalUrl", item.optBoolean("isInternalUrl", false));
+            parsedData.put("isLottie", item.optBoolean("isLottie", false));
+
 
 
 //                         String

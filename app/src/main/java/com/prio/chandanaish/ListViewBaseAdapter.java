@@ -60,12 +60,13 @@ public class ListViewBaseAdapter extends BaseAdapter {
                     convertView = inflater.inflate(R.layout.doctordemolist, parent, false);
                     holder = new ViewHolder(convertView, type);
                     break;
-                case "sectionCardFour":
-                    convertView = inflater.inflate(R.layout.demoimage, parent, false);
-                    holder = new ViewHolder(convertView, type);
-                    break;
+
                 case "sectionCardThree":
                     convertView = inflater.inflate(R.layout.tourist_spot, parent, false);
+                    holder = new ViewHolder(convertView, type);
+                    break;
+                case "sectionCardFour":
+                    convertView = inflater.inflate(R.layout.demoimage, parent, false);
                     holder = new ViewHolder(convertView, type);
                     break;
                 default:
@@ -97,6 +98,20 @@ public class ListViewBaseAdapter extends BaseAdapter {
                 setTextIfNotNull(holder.title, itemData.get("title"));
                 setTextIfNotNull(holder.shortDescription, itemData.get("shortDescription"));
                 setTextIfNotNull(holder.description, itemData.get("description"));
+                String docUrl = itemData.get("imageUrl");
+                if (docUrl != null && !docUrl.trim().isEmpty()) {
+                    Toast.makeText(context, docUrl+"find image url", Toast.LENGTH_SHORT).show();
+                    Picasso.get()
+                            .load(docUrl)
+                            .placeholder(R.drawable.ic_sharp_how_to_reg_24)
+                            .error(R.drawable.ic_sharp_how_to_reg_24)
+                            .fit()
+                            .centerCrop()
+                            .into(holder.shapeableImageView);
+                } else {
+                    holder.shapeableImageView.setImageResource(R.drawable.ic_sharp_how_to_reg_24);
+                }
+
                 handlePhoneNumber(holder, itemData,type);
                 break;
             case "sectionCardThree":
@@ -105,17 +120,31 @@ public class ListViewBaseAdapter extends BaseAdapter {
                 setTextIfNotNull(holder.description, itemData.get("description"));
 
 
-                                 if (holder.imageView != null) {
+                if (holder.imageView != null) {
                     String imageUrl = itemData.get("imageUrl");
                     Picasso.get().load(imageUrl).fit().into(holder.imageView);
                 }
-
+                break;
 
 
             case "sectionCardFour":
                 if (holder.imageView != null) {
                     String imageUrl = itemData.get("imageUrl");
                     Picasso.get().load(imageUrl).fit().into(holder.imageView);
+                    String urlLink = itemData.get("url");
+                    boolean isClickableLink = Boolean.parseBoolean(itemData.get("isClikableLink"));
+//                    Toast.makeText(context, itemData.get("isClikableLink")+"debug", Toast.LENGTH_SHORT).show();
+                    if(isClickableLink)
+                    {
+                        holder.parentLayout.setOnClickListener(v -> {
+                            Toast.makeText(context, urlLink+"click you", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(context, Web.class);
+                            intent.putExtra("url", urlLink);
+                            context.startActivity(intent);
+                        });
+                    }
+
+//                    layout.setOnClickListener(v -
                 }
                 break;
         }
@@ -124,7 +153,7 @@ public class ListViewBaseAdapter extends BaseAdapter {
         String phoneNumber = itemData.get("phoneNumber");
 
 
-        Toast.makeText(context, "phoneNumber "+phoneNumber, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "phoneNumber "+phoneNumber, Toast.LENGTH_SHORT).show();
         if (phoneNumber != null && !phoneNumber.isEmpty()) {
             holder.call.setVisibility(View.VISIBLE);
             holder.call.setText(phoneNumber);
@@ -140,7 +169,7 @@ public class ListViewBaseAdapter extends BaseAdapter {
     private static class ViewHolder {
         TextView title, shortDescription, description, call;
         ImageView imageView;
-        LinearLayout callSection;
+        LinearLayout callSection,parentLayout;
         ShapeableImageView shapeableImageView;
         Button button;
 
@@ -170,50 +199,14 @@ public class ListViewBaseAdapter extends BaseAdapter {
                 button=view.findViewById(R.id.tourist_spot_button);
 
             }
+            else if(type.equals("sectionCardFour")){
+                imageView=view.findViewById(R.id.demoimageimageview);
+                parentLayout=view.findViewById(R.id.demoimage);
+
+            }
         }
     }
 
-//    private void bindSectionCardOne(View view, HashMap<String, String> itemData) {
-//
-//        TextView title = view.findViewById(R.id.textView);
-//        TextView shortDescription = view.findViewById(R.id.textView1);
-//        TextView description = view.findViewById(R.id.textView2);
-//TextView phoneNumber = view.findViewById(R.id.textView3);
-//LinearLayout callSection=view.findViewById(R.id.callSection);
-//String titleData = itemData.get("title");
-//String shortDescriptionData = itemData.get("shortDescription");
-//String descriptionData = itemData.get("description");
-//String phoneNumberData = itemData.get("phoneNumber");
-//
-//
-//if(titleData!=null) {
-//    title.setText(titleData);
-//    title.setVisibility(View.VISIBLE);
-//}
-//if(shortDescriptionData!=null) {
-//    shortDescription.setText(shortDescriptionData);
-//    shortDescription.setVisibility(View.VISIBLE);
-//}
-//if(descriptionData!=null) {
-//    description.setText(descriptionData);
-//    description.setVisibility(View.VISIBLE);
-//}
-//        if(phoneNumberData!=null) {
-//            phoneNumber.setText(phoneNumberData);
-//            callSection.setVisibility(View.VISIBLE);
-////    phoneNumber.setVisibility(View.VISIBLE);
-//
-//        }
-//}
-//
-//
-////        holder.callSection.setVisibility(View.GONE);
-////        holder.demolistwithcall.setVisibility(View.GONE);
-////
-////        setTextIfNotNull(holder.title, itemData.get("title"));
-////        setTextIfNotNull(holder.shortDescription, itemData.get("shortDescription"));
-////        setTextIfNotNull(holder.description, itemData.get("description"));
-//    }
 
     private void bindSectionCardTwo(ViewHolder holder, HashMap<String, String> itemData) {
         holder.callSection.setVisibility(View.VISIBLE);
@@ -221,7 +214,6 @@ public class ListViewBaseAdapter extends BaseAdapter {
         setTextIfNotNull(holder.title, itemData.get("title"));
         setTextIfNotNull(holder.shortDescription, itemData.get("shortDescription"));
 
-//        Toast.makeText(context, "itemData debug toast"+itemData.get("shortDescription"), Toast.LENGTH_SHORT).show();
         setTextIfNotNull(holder.description, itemData.get("description"));
 
         String phoneNumber = itemData.get("phoneNumber");

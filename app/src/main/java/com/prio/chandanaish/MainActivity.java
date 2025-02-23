@@ -30,6 +30,7 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
              postcodelist,famouslist,garivaralist,history,secoundlaybtn,Play;
 //    private MeowBottomNavigation meowBottomNavigation;
     ImageSlider imageSlider;
+
     ArrayList<SlideModel> imageList = new ArrayList<>();
 
     private RecyclerView recyclerViewMenu;
@@ -66,62 +68,38 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         temparature = findViewById(R.id.temparature);
         marq = findViewById(R.id.marqueetext);
-        imageSlider =findViewById(R.id.image_slider);
+
         dateTime= findViewById(R.id.dateandtime);
-//        meowBottomNavigation=findViewById(R.id.bottomnavigation);
-//
+
         layoutone= findViewById(R.id.mainlay);
-//        layounttwo = findViewById(R.id.secoundrylay);
-//        newslist = findViewById(R.id.newsCard);
-//        educationlist = findViewById(R.id.education);
-//        fireservicelist = findViewById(R.id.fireservice);
-//        doctorlist = findViewById(R.id.doctor);
-//        bloodlist = findViewById(R.id.blood);
-//        hospitallist = findViewById(R.id.hospital);
-//        policelist = findViewById(R.id.police);
-//        diagonesticlist= findViewById(R.id.daigonestic);
-//        visitedplacelist = findViewById(R.id.dorshoniyostan);
-//        emagencynumberlst = findViewById(R.id.emargencynumber);
-//        resultlist = findViewById(R.id.result);
-//        songotonlist = findViewById(R.id.songgoton);
-//        mAdView = findViewById(R.id.adView);
-//        secoundlaybtn = findViewById(R.id.secoundlaybutton);
+
         recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
 
-        recyclerViewMenu.setLayoutManager(new GridLayoutManager(this, 4));
-//        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
-        // Initialize List & Adapter
+// Initialize the menu list first
         menuItemList = new ArrayList<>();
+
+// Pass the initialized list to the adapter
         menuAdapter = new MenuAdapter(this, menuItemList);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return menuAdapter.getItemViewType(position) == MenuAdapter.TYPE_BANNER ? 4 : 1;
+            }
+        });
+        recyclerViewMenu.setLayoutManager(gridLayoutManager);
         recyclerViewMenu.setAdapter(menuAdapter);
 
-
         String apiUrl = "https://backend-eight-lake-96.vercel.app/api/v1/services"; // Replace with your actual URL
-//Toast.makeText(this,apiUrl,Toast.LENGTH_LONG).show();
-        // Use VolleyRequest to send the GET request
-        // Use VolleyRequest to send the GET request
+
         VolleyRequest.sendGetRequest(MainActivity.this, apiUrl, new VolleyRequest.VolleyCallback() {
             @Override
             public void onSuccess(List<Map<String, Object>> parsedData) {
-                // Show a Toast from the activity context
-//                Toast.makeText(MainActivity.this, "API call successful", Toast.LENGTH_LONG).show();
-
-                // Update the menu adapter with the new data
                 menuAdapter.updateMenuItems(parsedData);
-
-                // Iterate through the parsed data (for debugging purposes)
-//                for (Map<String, Object> item : parsedData) {
-//                    String id = (String) item.get("id");
-//                    String title = (String) item.get("title");
-//                    boolean status = (boolean) item.get("status");
-//                    String imageUrl = (String) item.get("imageUrl");
-//
-//                    // Log the parsed data
-////                    Log.d("Parsed Data", "ID: " + id + ", Title: " + title + ", Status: " + status + ", Image URL: " + imageUrl);
-//                }
             }
         });
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
 
 
@@ -146,28 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-        // Set an item click listener (optional)
-//        menuAdapter.setOnItemClickListener((position) -> {
-//            Toast.makeText(MainActivity.this, "Clicked item: " + menuItemList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-//        });s
-//        Play.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Web.url="https://ea.freehit.eu/";
-//                Intent intent= new Intent(getApplicationContext(), Web.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        secoundlaybtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Web.url="https://ea.freehit.eu/";
-//                Intent intent= new Intent(getApplicationContext(), Web.class);
-//                startActivity(intent);
-//            }
-//        });
 
         //ad
         marq.setSelected(true);
@@ -183,11 +139,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 //slider image list
-        imageList.add(new SlideModel(R.drawable.download,null));
-        imageList.add(new SlideModel(R.drawable.download,null));
-        imageList.add(new SlideModel(R.drawable.download,null));
-
-        imageSlider.setImageList(imageList);
+//        imageList.add(new SlideModel(R.drawable.download,null));
+//        imageList.add(new SlideModel(R.drawable.download,null));
+//        imageList.add(new SlideModel(R.drawable.download,null));
+//
+//        imageSlider.setImageList(imageList);
 
         //top bar date and time
 //        String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());

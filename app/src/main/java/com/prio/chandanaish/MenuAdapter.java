@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -71,7 +73,7 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     slideModels.add(new SlideModel(imageUrl, ScaleTypes.FIT));
                 }
             } else {
-                slideModels.add(new SlideModel("https://example.com/default_banner.jpg", ScaleTypes.FIT));
+                slideModels.add(new SlideModel(R.drawable.download, ScaleTypes.FIT));
             }
             bannerHolder.imageSlider.setImageList(slideModels);
         } else {
@@ -80,15 +82,33 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             String imageUrl = (String) item.get("imageUrl");
             String url = (String) item.get("url");
             boolean isClickableLink = Boolean.TRUE.equals(item.get("isClickableLink"));
+//            boolean isLottie = Boolean.TRUE.equals(item.get("isLottie"));
+            boolean isLottie = "true".equals(String.valueOf(item.get("isLottie")));
+
             String id = (String) item.get("id");
+//            Toast.makeText(context, item+"debug lottie", Toast.LENGTH_SHORT).show();
 
             menuHolder.cardText.setText(title != null ? title : "Untitled");
-            if (imageUrl != null && !imageUrl.isEmpty()) {
-                Picasso.get().load(imageUrl).fit().into(menuHolder.cardImage);
-            } else {
-                menuHolder.cardImage.setImageResource(R.drawable.pppp); // Default placeholder image
+            if (isLottie) {
+                Toast.makeText(context, imageUrl+"debug lottie"+isLottie, Toast.LENGTH_SHORT).show();
+                menuHolder.lottieAnimationView.setVisibility(View.VISIBLE);
+                menuHolder.lottieAnimationView.setAnimationFromUrl(imageUrl);
+                menuHolder.cardImage.setVisibility(View.GONE);
             }
+            else {
 
+                if (imageUrl != null && !imageUrl.isEmpty()) {
+                    menuHolder.cardImage.setVisibility(
+                            View.VISIBLE
+                    );
+                    Picasso.get().load(imageUrl).fit().into(menuHolder.cardImage);
+                } else {
+                    menuHolder.cardImage.setVisibility(
+                            View.VISIBLE
+                    );
+                    menuHolder.cardImage.setImageResource(R.drawable.pppp); // Default placeholder image
+                }
+            }
             menuHolder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, isClickableLink ? Web.class : ItemList.class);
                 intent.putExtra("id", id);
@@ -116,10 +136,12 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static class MenuViewHolder extends RecyclerView.ViewHolder {
         TextView cardText;
         ImageView cardImage;
+        LottieAnimationView lottieAnimationView;
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);
             cardText = itemView.findViewById(R.id.cardText);
             cardImage = itemView.findViewById(R.id.cardImage);
+            lottieAnimationView=itemView.findViewById(R.id.cardLottie);
         }
     }
 }
