@@ -30,7 +30,7 @@ public class VolleyRequest {
                         try {
                             // Log the response to see it in Logcat
                             Log.d(TAG, "Response: " + response.toString());
-                           Toast.makeText(context,response.toString(),Toast.LENGTH_LONG).show();
+//                           Toast.makeText(context,response.toString(),Toast.LENGTH_LONG).show();
                             // Extracting "data" array from response
                             JSONArray dataArray = response.getJSONArray("data");
 

@@ -17,6 +17,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 //import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -33,6 +39,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -75,6 +82,65 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
 
+
+        //get breaking news from api
+
+//        marq.setSelected(true);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, // HTTP method
+                "https://backend-eight-lake-96.vercel.app/api/v1/breaking-news", // URL (replace with your actual endpoint)
+                null, // No parameters (or provide a JSONObject if needed)
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Handle the response here
+                        try {
+                            JSONArray dataArray = response.getJSONArray("data");
+                            StringBuilder marqueeText = new StringBuilder();
+
+                            for (int i = 0; i < dataArray.length(); i++) {
+                              JSONObject newsItem = dataArray.getJSONObject(i);
+                                marq.setSelected(true);  // Make sure this line is called after setting the text
+
+                                // Extract the news title and content (or other fields as needed)
+                                String newsTitle = newsItem.getString("newsTitle");
+                                marqueeText.append(newsTitle).append(" ");
+                            }
+                            marq.setText(marqueeText.toString());
+
+                            // Start the marquee effect
+                            marq.setSelected(true);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle errors here
+                        error.printStackTrace();
+                    }
+                }
+        );
+
+// Add the request to the request queue (usually done in your activity or fragment)
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this); // `context` is your activity or application context
+        queue.add(jsonObjectRequest);
+
+
+
+
+
+
+
+
+
+
+
+
 // Initialize the menu list first
         menuItemList = new ArrayList<>();
 
@@ -101,7 +167,28 @@ public class MainActivity extends AppCompatActivity {
         });
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
+    switch (item.getItemId()) {
+//        case R.id.menu_item_home:
+            // Open Home Activity
+//            Intent homeIntent = new Intent(MainActivity.this, ma);
+//            startActivity(homeIntent);
+//            return true;
+//        case R.id.menu_item_search:
+            // Open Search Activity
+//            Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
+//            startActivity(searchIntent);
+//            return true;
+//        case R.id.menu_item_profile:
+            // Open Profile Activity
+//            Intent profileIntent = new Intent(MainActivity.this, ProfileActivity.class);
+//            startActivity(profileIntent);
+//            return true;
+//        default:
+//            return false;
+    }
+});
 
 
 

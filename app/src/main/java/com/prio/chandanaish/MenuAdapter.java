@@ -81,8 +81,8 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             String title = (String) item.get("title");
             String imageUrl = (String) item.get("imageUrl");
             String url = (String) item.get("url");
-            boolean isClickableLink = Boolean.TRUE.equals(item.get("isClickableLink"));
-//            boolean isLottie = Boolean.TRUE.equals(item.get("isLottie"));
+            boolean isClickableLink = (boolean) item.get("isClikableLink");
+//            boolean isClickableLink = "true".equals(isClickableLinkStr);
             boolean isLottie = "true".equals(String.valueOf(item.get("isLottie")));
 
             String id = (String) item.get("id");
@@ -90,7 +90,7 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             menuHolder.cardText.setText(title != null ? title : "Untitled");
             if (isLottie) {
-                Toast.makeText(context, imageUrl+"debug lottie"+isLottie, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, imageUrl+"debug lottie"+isLottie, Toast.LENGTH_SHORT).show();
                 menuHolder.lottieAnimationView.setVisibility(View.VISIBLE);
                 menuHolder.lottieAnimationView.setAnimationFromUrl(imageUrl);
                 menuHolder.cardImage.setVisibility(View.GONE);
@@ -110,6 +110,11 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
             menuHolder.itemView.setOnClickListener(v -> {
+//                Toast.makeText(context, "asdfdf"+ item.get("isClikableLink")+item
+
+
+//                        , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, id+"debug"+isClickableLink+url, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, isClickableLink ? Web.class : ItemList.class);
                 intent.putExtra("id", id);
                 intent.putExtra("url", url);
