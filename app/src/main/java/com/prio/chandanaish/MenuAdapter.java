@@ -114,7 +114,7 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
 //                        , Toast.LENGTH_SHORT).show();
-//                Toast.makeText(context, id+"debug"+isClickableLink+url, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, id+"debug"+isClickableLink+url, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, isClickableLink ? Web.class : ItemList.class);
                 intent.putExtra("id", id);
                 intent.putExtra("url", url);

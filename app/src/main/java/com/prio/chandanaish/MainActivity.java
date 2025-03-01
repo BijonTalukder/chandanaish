@@ -82,11 +82,6 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
 
-
-        //get breaking news from api
-
-//        marq.setSelected(true);
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, // HTTP method
                 "https://backend-eight-lake-96.vercel.app/api/v1/breaking-news", // URL (replace with your actual endpoint)
@@ -169,25 +164,36 @@ public class MainActivity extends AppCompatActivity {
 
 bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
-    switch (item.getItemId()) {
-//        case R.id.menu_item_home:
-            // Open Home Activity
-//            Intent homeIntent = new Intent(MainActivity.this, ma);
-//            startActivity(homeIntent);
-//            return true;
-//        case R.id.menu_item_search:
-            // Open Search Activity
-//            Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
-//            startActivity(searchIntent);
-//            return true;
-//        case R.id.menu_item_profile:
-            // Open Profile Activity
-//            Intent profileIntent = new Intent(MainActivity.this, ProfileActivity.class);
-//            startActivity(profileIntent);
-//            return true;
+
+    Toast.makeText(MainActivity.this, item.getItemId(), Toast.LENGTH_SHORT).show();
+    switch (item.getItemId())
+    {
+
+        case R.id.home:
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            return true;
+        case R.id.spot:
+            Intent intent1 = new Intent(getApplicationContext(), Web.class);
+            intent1.putExtra("url","https://cms-bijontalukders-projects.vercel.app/tourist-spot");
+            startActivity(intent1);
+            return true;
+        case R.id.news:
+            Intent intent2 = new Intent(getApplicationContext(), ItemList.class);
+            intent2.putExtra("url","https://cms-bijontalukders-projects.vercel.app/news");
+            startActivity(intent2);
+            return true;
+        default:
+            return  false;
+    }
+
+//    return  false;
+
+//    switch (item.getItemId()) {
+//
 //        default:
 //            return false;
-    }
+//  }
 });
 
 
@@ -225,41 +231,7 @@ bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
 
 
-//slider image list
-//        imageList.add(new SlideModel(R.drawable.download,null));
-//        imageList.add(new SlideModel(R.drawable.download,null));
-//        imageList.add(new SlideModel(R.drawable.download,null));
-//
-//        imageSlider.setImageList(imageList);
 
-        //top bar date and time
-//        String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
-//        dateTime.setText(currentDateTimeString);
-//        meowBottomNavigation.show(1,true);
-//        meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home_24));
-//        meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_baseline_add_circle_24));
-
-
-//      meowBottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
-//          @Override
-//          public Unit invoke(MeowBottomNavigation.Model model) {
-//              return null;
-//          }
-//      });
-//      meowBottomNavigation.setOnShowListener(new Function1<MeowBottomNavigation.Model, Unit>() {
-//          @Override
-//          public Unit invoke(MeowBottomNavigation.Model model) {
-//              if (model.getId()==1){
-//                  layoutone.setVisibility(View.VISIBLE);
-//                  layounttwo.setVisibility(View.GONE);
-//              }
-//              else{
-//                  layounttwo.setVisibility(View.VISIBLE);
-//layoutone.setVisibility(View.GONE);
-//              }
-//              return null;
-//          }
-//      });
 
         temparature.setOnClickListener(view -> {
 //                mInterstitialAd.show(MainActivity.this);
