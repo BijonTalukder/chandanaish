@@ -51,19 +51,19 @@ import kotlin.jvm.functions.Function1;
 
 public class MainActivity extends AppCompatActivity {
     AdView mAdView;
-    LinearLayout webview;
-    LinearLayout layoutone,layounttwo;
-    ProgressBar progressBar;
+//    LinearLayout webview;
+    LinearLayout layoutone;
+//    ProgressBar progressBar;
     private InterstitialAd mInterstitialAd;
     ImageView temparature;
     TextView marq ,dateTime;
-     CardView newslist,educationlist,fireservicelist,doctorlist,bloodlist,hospitallist,policelist,
-             diagonesticlist,visitedplacelist,emagencynumberlst,resultlist,songotonlist,esebalist,
-             postcodelist,famouslist,garivaralist,history,secoundlaybtn,Play;
+//     CardView newslist,educationlist,fireservicelist,doctorlist,bloodlist,hospitallist,policelist,
+//             diagonesticlist,visitedplacelist,emagencynumberlst,resultlist,songotonlist,esebalist,
+//             postcodelist,famouslist,garivaralist,history,secoundlaybtn,Play;
 //    private MeowBottomNavigation meowBottomNavigation;
-    ImageSlider imageSlider;
+//    ImageSlider imageSlider;
 
-    ArrayList<SlideModel> imageList = new ArrayList<>();
+//    ArrayList<SlideModel> imageList = new ArrayList<>();
 
     private RecyclerView recyclerViewMenu;
     private MenuAdapter menuAdapter;
