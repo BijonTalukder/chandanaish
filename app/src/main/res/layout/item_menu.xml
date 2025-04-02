@@ -17,10 +17,18 @@
         android:gravity="center">
 
         <ImageView
+            android:visibility="gone"
             android:id="@+id/cardImage"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/edu" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/cardLottie"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:layout_height="60dp"/>
 
         <TextView
             android:id="@+id/cardText"

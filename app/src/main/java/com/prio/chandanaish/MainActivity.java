@@ -17,6 +17,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 //import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -30,8 +36,10 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -43,18 +51,19 @@ import kotlin.jvm.functions.Function1;
 
 public class MainActivity extends AppCompatActivity {
     AdView mAdView;
-    LinearLayout webview;
-    LinearLayout layoutone,layounttwo;
-    ProgressBar progressBar;
+//    LinearLayout webview;
+    LinearLayout layoutone;
+//    ProgressBar progressBar;
     private InterstitialAd mInterstitialAd;
     ImageView temparature;
     TextView marq ,dateTime;
-     CardView newslist,educationlist,fireservicelist,doctorlist,bloodlist,hospitallist,policelist,
-             diagonesticlist,visitedplacelist,emagencynumberlst,resultlist,songotonlist,esebalist,
-             postcodelist,famouslist,garivaralist,history,secoundlaybtn,Play;
+//     CardView newslist,educationlist,fireservicelist,doctorlist,bloodlist,hospitallist,policelist,
+//             diagonesticlist,visitedplacelist,emagencynumberlst,resultlist,songotonlist,esebalist,
+//             postcodelist,famouslist,garivaralist,history,secoundlaybtn,Play;
 //    private MeowBottomNavigation meowBottomNavigation;
-    ImageSlider imageSlider;
-    ArrayList<SlideModel> imageList = new ArrayList<>();
+//    ImageSlider imageSlider;
+
+//    ArrayList<SlideModel> imageList = new ArrayList<>();
 
     private RecyclerView recyclerViewMenu;
     private MenuAdapter menuAdapter;
@@ -66,108 +75,148 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         temparature = findViewById(R.id.temparature);
         marq = findViewById(R.id.marqueetext);
-        imageSlider =findViewById(R.id.image_slider);
+
         dateTime= findViewById(R.id.dateandtime);
-//        meowBottomNavigation=findViewById(R.id.bottomnavigation);
-//
+
         layoutone= findViewById(R.id.mainlay);
-        layounttwo = findViewById(R.id.secoundrylay);
-        newslist = findViewById(R.id.newsCard);
-        educationlist = findViewById(R.id.education);
-        fireservicelist = findViewById(R.id.fireservice);
-        doctorlist = findViewById(R.id.doctor);
-        bloodlist = findViewById(R.id.blood);
-        hospitallist = findViewById(R.id.hospital);
-        policelist = findViewById(R.id.police);
-        diagonesticlist= findViewById(R.id.daigonestic);
-        visitedplacelist = findViewById(R.id.dorshoniyostan);
-        emagencynumberlst = findViewById(R.id.emargencynumber);
-        resultlist = findViewById(R.id.result);
-        songotonlist = findViewById(R.id.songgoton);
-        mAdView = findViewById(R.id.adView);
-        secoundlaybtn = findViewById(R.id.secoundlaybutton);
+
         recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
 
-        recyclerViewMenu.setLayoutManager(new GridLayoutManager(this, 4));
-//        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
-        // Initialize List & Adapter
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, // HTTP method
+                "https://backend-eight-lake-96.vercel.app/api/v1/breaking-news", // URL (replace with your actual endpoint)
+                null, // No parameters (or provide a JSONObject if needed)
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Handle the response here
+                        try {
+                            JSONArray dataArray = response.getJSONArray("data");
+                            StringBuilder marqueeText = new StringBuilder();
+
+                            for (int i = 0; i < dataArray.length(); i++) {
+                              JSONObject newsItem = dataArray.getJSONObject(i);
+                                marq.setSelected(true);  // Make sure this line is called after setting the text
+
+                                // Extract the news title and content (or other fields as needed)
+                                String newsTitle = newsItem.getString("newsTitle");
+                                marqueeText.append(newsTitle).append(" ");
+                            }
+                            marq.setText(marqueeText.toString());
+
+                            // Start the marquee effect
+                            marq.setSelected(true);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle errors here
+                        error.printStackTrace();
+                    }
+                }
+        );
+
+// Add the request to the request queue (usually done in your activity or fragment)
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this); // `context` is your activity or application context
+        queue.add(jsonObjectRequest);
+
+
+
+
+
+
+
+
+
+
+
+
+// Initialize the menu list first
         menuItemList = new ArrayList<>();
+
+// Pass the initialized list to the adapter
         menuAdapter = new MenuAdapter(this, menuItemList);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return menuAdapter.getItemViewType(position) == MenuAdapter.TYPE_BANNER ? 4 : 1;
+            }
+        });
+        recyclerViewMenu.setLayoutManager(gridLayoutManager);
         recyclerViewMenu.setAdapter(menuAdapter);
 
-
         String apiUrl = "https://backend-eight-lake-96.vercel.app/api/v1/services"; // Replace with your actual URL
-//Toast.makeText(this,apiUrl,Toast.LENGTH_LONG).show();
-        // Use VolleyRequest to send the GET request
-        // Use VolleyRequest to send the GET request
+
         VolleyRequest.sendGetRequest(MainActivity.this, apiUrl, new VolleyRequest.VolleyCallback() {
             @Override
             public void onSuccess(List<Map<String, Object>> parsedData) {
-                // Show a Toast from the activity context
-//                Toast.makeText(MainActivity.this, "API call successful", Toast.LENGTH_LONG).show();
-
-                // Update the menu adapter with the new data
                 menuAdapter.updateMenuItems(parsedData);
-
-                // Iterate through the parsed data (for debugging purposes)
-//                for (Map<String, Object> item : parsedData) {
-//                    String id = (String) item.get("id");
-//                    String title = (String) item.get("title");
-//                    boolean status = (boolean) item.get("status");
-//                    String imageUrl = (String) item.get("imageUrl");
-//
-//                    // Log the parsed data
-////                    Log.d("Parsed Data", "ID: " + id + ", Title: " + title + ", Status: " + status + ", Image URL: " + imageUrl);
-//                }
             }
         });
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
 
+    Toast.makeText(MainActivity.this, item.getItemId(), Toast.LENGTH_SHORT).show();
+    switch (item.getItemId())
+    {
 
+        case R.id.home:
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            return true;
+        case R.id.spot:
+            Intent intent1 = new Intent(getApplicationContext(), Web.class);
+            intent1.putExtra("url","https://cms-bijontalukders-projects.vercel.app/tourist-spot");
+            startActivity(intent1);
+            return true;
+        case R.id.news:
+            Intent intent2 = new Intent(getApplicationContext(), ItemList.class);
+            intent2.putExtra("url","https://cms-bijontalukders-projects.vercel.app/news");
+            startActivity(intent2);
+            return true;
+        default:
+            return  false;
+    }
 
+//    return  false;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Set an item click listener (optional)
-//        menuAdapter.setOnItemClickListener((position) -> {
-//            Toast.makeText(MainActivity.this, "Clicked item: " + menuItemList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-//        });s
-//        Play.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Web.url="https://ea.freehit.eu/";
-//                Intent intent= new Intent(getApplicationContext(), Web.class);
-//                startActivity(intent);
-//            }
-//        });
+//    switch (item.getItemId()) {
 //
-//        secoundlaybtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Web.url="https://ea.freehit.eu/";
-//                Intent intent= new Intent(getApplicationContext(), Web.class);
-//                startActivity(intent);
-//            }
-//        });
+//        default:
+//            return false;
+//  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //ad
         marq.setSelected(true);
@@ -177,46 +226,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        loadFullScreenad();
+//        mAdView.loadAd(adRequest);
+//        loadFullScreenad();
 
 
 
-//slider image list
-        imageList.add(new SlideModel(R.drawable.download,null));
-        imageList.add(new SlideModel(R.drawable.download,null));
-        imageList.add(new SlideModel(R.drawable.download,null));
 
-        imageSlider.setImageList(imageList);
-
-        //top bar date and time
-//        String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
-//        dateTime.setText(currentDateTimeString);
-//        meowBottomNavigation.show(1,true);
-//        meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home_24));
-//        meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_baseline_add_circle_24));
-
-
-//      meowBottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
-//          @Override
-//          public Unit invoke(MeowBottomNavigation.Model model) {
-//              return null;
-//          }
-//      });
-//      meowBottomNavigation.setOnShowListener(new Function1<MeowBottomNavigation.Model, Unit>() {
-//          @Override
-//          public Unit invoke(MeowBottomNavigation.Model model) {
-//              if (model.getId()==1){
-//                  layoutone.setVisibility(View.VISIBLE);
-//                  layounttwo.setVisibility(View.GONE);
-//              }
-//              else{
-//                  layounttwo.setVisibility(View.VISIBLE);
-//layoutone.setVisibility(View.GONE);
-//              }
-//              return null;
-//          }
-//      });
 
         temparature.setOnClickListener(view -> {
 //                mInterstitialAd.show(MainActivity.this);

@@ -1,23 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#D3F3F3F3"
     tools:context=".MainActivity">
 
-
+    <!-- AppBar -->
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_alignParentTop="true"
         android:id="@+id/lay1"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_alignParentTop="true">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -32,901 +27,128 @@
                 android:layout_height="wrap_content"
                 android:text="প্রিয় চন্দনাইশ"
                 android:textColor="#FFFFFF"
-                android:textSize="23dp" />
+                android:textSize="23sp"/>
+
             <TextView
-                android:layout_width="wrap_content"
                 android:id="@+id/dateandtime"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <ImageView
                 android:id="@+id/temparature"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-
-                android:layout_gravity="center_horizontal|end"
-                android:layout_marginRight="5dp"
-
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_baseline_cloud_24" />
-
-
+                android:layout_gravity="end"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_baseline_cloud_24"/>
         </androidx.appcompat.widget.Toolbar>
-
-
     </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content -->
     <LinearLayout
-        android:layout_below="@id/lay1"
         android:id="@+id/mainlay"
-
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
-        <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lay1"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
 
-            android:layout_height="match_parent">
-     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:orientation="vertical"
-    >
-    <LinearLayout
-        android:id="@+id/lay2"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="29dp">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:background="#DC3535"
-            android:layout_gravity="center"
-            android:padding="5sp"
-            android:layout_height="match_parent">
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                android:text="News"
-                android:textSize="15sp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:padding="5sp"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/marqueetext"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:singleLine="true"
-                android:ellipsize="marquee"
-                android:fadingEdge="horizontal"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:scrollHorizontally="true"
+                <!-- Marquee Text -->
+                <LinearLayout
+                    android:id="@+id/lay2"
+                    android:layout_width="match_parent"
+                    android:layout_height="29dp"
+                    android:orientation="horizontal">
 
-                android:text="সম্মানিত এলাকাবাসী আমরা আপনাদের সব সেবা একটি এপসের মাধ্যমে প্রদান করার চেষ্টা করতেছি। আমাদের টিম ইনফরমেশন কালেক্ট করার চেষ্টা করতেছে।আপনারা যদি চান আপনার এলাকার সঠিক ইনফরমেশন দিয়ে আমাদের সাথে যুক্ত থাকতে তাহলে প্লাস বাটনে ক্লিক করুন । "/>
-        </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="#DC3535"
+                        android:padding="5sp">
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="News"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="5sp">
+
+                        <TextView
+                            android:id="@+id/marqueetext"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:singleLine="true"
+                            android:ellipsize="marquee"
+                            android:fadingEdge="horizontal"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:scrollHorizontally="true"
+
+                            android:text=""
+                        android:layout_gravity="center" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- RecyclerView -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <!-- Image Slider -->
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/slider"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="16dp"-->
+<!--                    app:cardCornerRadius="9dp">-->
+
+<!--                    <com.denzcoskun.imageslider.ImageSlider-->
+<!--                        android:id="@+id/image_slider"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="100dp"-->
+<!--                        app:iss_auto_cycle="true"-->
+<!--                        app:iss_delay="0"-->
+<!--                        app:iss_error_image="@drawable/ic_launcher_background"-->
+<!--                        app:iss_period="1000"-->
+<!--                        app:iss_placeholder="@drawable/ic_launcher_foreground"/>-->
+<!--                </androidx.cardview.widget.CardView>-->
+
+                <!-- AdView -->
+<!--                <com.google.android.gms.ads.AdView-->
+<!--                    android:id="@+id/adView"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="5dp"-->
+
+<!--                    />-->
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
-         <androidx.recyclerview.widget.RecyclerView
-             android:id="@+id/recyclerViewMenu"
-             android:layout_width="match_parent"
-
-             android:layout_height="match_parent"/>
-
-
-
-
-         <LinearLayout
-        android:id="@+id/lay3"
+    <!-- BottomAppBar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-
-        android:weightSum="12"        >
-        <androidx.cardview.widget.CardView
-            android:id="@+id/newsCard"
-            android:layout_width="0dp"
-            android:elevation="5dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/animationView"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:lottie_url="https://assets8.lottiefiles.com/private_files/lf30_iywakhjv.json"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="নিউজ"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:padding="3dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/education"
-            android:layout_width="0dp"
-            android:elevation="5dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:src="@drawable/edu"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="শিক্ষা প্রতিষ্টান"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:padding="3dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/fireservice"
-            android:layout_width="0dp"
-            android:elevation="5dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:src="@drawable/fireservice"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="ফায়ার সার্ভিস"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:padding="3dp"
-
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/doctor"
-            android:layout_width="0dp"
-            android:elevation="5dp"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-
-
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.airbnb.lottie.LottieAnimationView
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:lottie_url="https://assets3.lottiefiles.com/packages/lf20_FNYNayM037.json"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ডাক্তার"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:padding="3dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-
-
-
-
-
-
-    </LinearLayout>
-    <androidx.cardview.widget.CardView
-        app:cardCornerRadius="9dp"
-        android:id="@+id/slider"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/image_slider"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:iss_auto_cycle="true"
-            app:iss_period="1000"
-            app:iss_placeholder="@drawable/ic_launcher_foreground"
-            app:iss_error_image="@drawable/ic_launcher_background"
-            app:iss_delay="0"/>
-
-
-
-
-    </androidx.cardview.widget.CardView>
-
-
-         <com.google.android.gms.ads.AdView
-             xmlns:ads="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/adView"
-
-             android:layout_marginBottom="5dp"
-
-
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_centerHorizontal="true"
-             android:layout_alignParentBottom="true"
-             ads:adSize="BANNER"
-             ads:adUnitId="ca-app-pub-3186033098717337/3348481786">
-         </com.google.android.gms.ads.AdView>
-
-
-
-         <LinearLayout
-        android:id="@+id/lay4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-
-        android:weightSum="12"        >
-        <androidx.cardview.widget.CardView
-            android:id="@+id/blood"
-            android:layout_width="0dp"
-            android:elevation="5dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.airbnb.lottie.LottieAnimationView
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:lottie_url="https://assets4.lottiefiles.com/packages/lf20_lsfhjhqp.json"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="রক্ত"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:padding="3dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/hospital"
-            android:layout_width="0dp"
-            android:elevation="5dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:src="@drawable/hospital"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="হাসপাতাল"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:padding="3dp"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/police"
-            android:layout_width="0dp"
-            android:elevation="5dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.airbnb.lottie.LottieAnimationView
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:lottie_url="https://assets5.lottiefiles.com/private_files/lf30_bo4j8H.json"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="পুলিশ"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:padding="3dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/daigonestic"
-            android:layout_width="0dp"
-            android:elevation="5dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.airbnb.lottie.LottieAnimationView
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_onfihwut.json"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ডায়াগনিস্টিক সেন্টার"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:padding="3dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/lay5"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-
-        android:weightSum="12"        >
-        <androidx.cardview.widget.CardView
-            android:id="@+id/dorshoniyostan"
-            android:layout_width="0dp"
-            android:elevation="5dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.airbnb.lottie.LottieAnimationView
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:lottie_url="https://assets6.lottiefiles.com/private_files/lf30_ed9sjb8t.json"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="দর্শনীয় স্থান"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:padding="3dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:id="@+id/emargencynumber"
-            android:elevation="5dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.airbnb.lottie.LottieAnimationView
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:lottie_url="https://assets7.lottiefiles.com/packages/lf20_datqo9uz.json"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ইমার্জেন্সি নাম্বার"
-                    android:singleLine="true"
-                    android:ellipsize="end"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:padding="3dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/result"
-            android:layout_width="0dp"
-            android:elevation="5dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.airbnb.lottie.LottieAnimationView
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_v7tiqqzx.json"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="রেজাল্ট"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:padding="3dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/songgoton"
-            android:layout_width="0dp"
-            android:elevation="5dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.airbnb.lottie.LottieAnimationView
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_rpqgkq8m.json"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="সংঘঠন"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:padding="3dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"
-                    />
-
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-
-<!--        android:weightSum="12"        >-->
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:id="@+id/dokan"-->
-<!--            android:elevation="5dp"-->
-<!--            android:foreground="?android:attr/selectableItemBackground"-->
-<!--            android:clickable="true"-->
-<!--            android:layout_weight="3"-->
-<!--            android:layout_margin="5dp"-->
-<!--            android:layout_height="wrap_content">-->
-<!--            <LinearLayout-->
-<!--                android:orientation="vertical"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content">-->
-<!--                <com.airbnb.lottie.LottieAnimationView-->
-
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="60dp"-->
-<!--                    app:lottie_url="https://assets3.lottiefiles.com/packages/lf20_57TxAX.json"-->
-<!--                    app:lottie_autoPlay="true"-->
-<!--                    app:lottie_loop="true"/>-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="দোকান"-->
-<!--                    android:textSize="12dp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:padding="3dp"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    />-->
-
-<!--            </LinearLayout>-->
-
-
-
-<!--        </androidx.cardview.widget.CardView>-->
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:id="@+id/postcode"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:elevation="5dp"-->
-<!--            android:foreground="?android:attr/selectableItemBackground"-->
-<!--            android:clickable="true"-->
-<!--            android:layout_weight="3"-->
-<!--            android:layout_margin="5dp"-->
-<!--            android:layout_height="wrap_content">-->
-<!--            <LinearLayout-->
-<!--                android:orientation="vertical"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content">-->
-<!--             <ImageView-->
-<!--                 android:layout_width="match_parent"-->
-<!--                 android:layout_height="60dp"-->
-<!--                 android:src="@drawable/postoffice"-->
-<!--                 />-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="পোস্ট কোড"-->
-<!--                    android:textSize="12dp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:padding="3dp"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    />-->
-
-<!--            </LinearLayout>-->
-
-
-
-<!--        </androidx.cardview.widget.CardView>-->
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:id="@+id/bikhatomanush"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:elevation="5dp"-->
-<!--            android:foreground="?android:attr/selectableItemBackground"-->
-<!--            android:clickable="true"-->
-<!--            android:layout_weight="3"-->
-<!--            android:layout_margin="5dp"-->
-<!--            android:layout_height="wrap_content">-->
-<!--            <LinearLayout-->
-<!--                android:orientation="vertical"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content">-->
-<!--                <com.airbnb.lottie.LottieAnimationView-->
-
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="60dp"-->
-<!--                    app:lottie_url="https://assets3.lottiefiles.com/packages/lf20_Iw8bFYnh1F.json"-->
-<!--                    app:lottie_autoPlay="true"-->
-<!--                    app:lottie_loop="true"/>-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="বিখ্যাত ব্যাক্তি"-->
-<!--                    android:textSize="12dp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:padding="3dp"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    />-->
-
-<!--            </LinearLayout>-->
-
-
-
-<!--        </androidx.cardview.widget.CardView>-->
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:id="@+id/garibara"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:elevation="5dp"-->
-<!--            android:foreground="?android:attr/selectableItemBackground"-->
-<!--            android:clickable="true"-->
-<!--            android:layout_weight="3"-->
-<!--            android:layout_margin="5dp"-->
-<!--            android:layout_height="wrap_content">-->
-<!--            <LinearLayout-->
-<!--                android:orientation="vertical"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content">-->
-<!--                <com.airbnb.lottie.LottieAnimationView-->
-
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="60dp"-->
-<!--                    app:lottie_url="https://assets8.lottiefiles.com/packages/lf20_gdzapmjf.json"-->
-<!--                    app:lottie_autoPlay="true"-->
-<!--                    app:lottie_loop="true"/>-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="গাড়ি ভাড়া"-->
-<!--                    android:textSize="12dp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:padding="3dp"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    />-->
-
-<!--            </LinearLayout>-->
-
-
-
-<!--        </androidx.cardview.widget.CardView>-->
-<!--    </LinearLayout>-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-
-<!--        android:weightSum="12">-->
-
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:id="@+id/itihash"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:foreground="?android:attr/selectableItemBackground"-->
-<!--            android:clickable="true"-->
-<!--            android:layout_margin="5dp"-->
-<!--            android:layout_weight="3"-->
-<!--            android:elevation="5dp">-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical">-->
-
-<!--                <com.airbnb.lottie.LottieAnimationView-->
-
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="60dp"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    app:lottie_autoPlay="true"-->
-<!--                    app:lottie_loop="true"-->
-<!--                    app:lottie_url="https://assets2.lottiefiles.com/packages/lf20_ysrn2iwp.json" />-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    android:ellipsize="end"-->
-<!--                    android:padding="3dp"-->
-<!--                    android:singleLine="true"-->
-<!--                    android:text="ইতিহাস"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="12dp"-->
-<!--                    android:textStyle="bold" />-->
-
-<!--            </LinearLayout>-->
-
-
-<!--        </androidx.cardview.widget.CardView>-->
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:id="@+id/play"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:foreground="?android:attr/selectableItemBackground"-->
-<!--            android:clickable="true"-->
-<!--            android:layout_margin="5dp"-->
-<!--            android:layout_weight="3"-->
-<!--            android:elevation="5dp">-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical">-->
-
-<!--            <ImageView-->
-<!--                android:src="@drawable/video"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="60dp"/>-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    android:ellipsize="end"-->
-<!--                    android:padding="3dp"-->
-<!--                    android:singleLine="true"-->
-<!--                    android:text="খেলা"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="12dp"-->
-<!--                    android:textStyle="bold" />-->
-
-<!--            </LinearLayout>-->
-
-
-<!--        </androidx.cardview.widget.CardView>-->
-<!--    </LinearLayout>-->
-</LinearLayout>
-
-
-
-
-            <!--    slider section-->
-
-
-        </ScrollView>
-
-    </LinearLayout>
-
-<LinearLayout
-    android:layout_below="@id/lay1"
-    android:id="@+id/secoundrylay"
-    android:orientation="vertical"
-
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <androidx.cardview.widget.CardView
-        android:id="@+id/secoundlaybutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="match_parent"
-                android:text="Enjoy Cricket"
-                android:layout_height="20dp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-</LinearLayout>
-
-
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_menu"/>
+    <!-- Floating Action Button -->
 
 </RelativeLayout>
