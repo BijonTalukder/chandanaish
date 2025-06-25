@@ -83,43 +83,53 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.GET, // HTTP method
-                "https://backend-eight-lake-96.vercel.app/api/v1/breaking-news", // URL (replace with your actual endpoint)
-                null, // No parameters (or provide a JSONObject if needed)
+                Request.Method.GET,
+                "https://backend-eight-lake-96.vercel.app/api/v1/breaking-news",
+                null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        // Handle the response here
                         try {
-                            JSONArray dataArray = response.getJSONArray("data");
+                            Log.d("API_RESPONSE", response.toString());
+
+                            JSONArray dataArray = response.optJSONArray("data");
+                            if (dataArray == null || dataArray.length() == 0) {
+                                Log.e("API", "No data found");
+                                return;
+                            }
+
+                            TextView marq = findViewById(R.id.marqueetext);
+                            if (marq == null) {
+                                Log.e("UI", "marqueetext not found in layout");
+                                return;
+                            }
+
                             StringBuilder marqueeText = new StringBuilder();
 
                             for (int i = 0; i < dataArray.length(); i++) {
-                              JSONObject newsItem = dataArray.getJSONObject(i);
-                                marq.setSelected(true);  // Make sure this line is called after setting the text
-
-                                // Extract the news title and content (or other fields as needed)
-                                String newsTitle = newsItem.getString("newsTitle");
+                                JSONObject newsItem = dataArray.getJSONObject(i);
+                                String newsTitle = newsItem.optString("newsTitle", "");
                                 marqueeText.append(newsTitle).append(" ");
                             }
-                            marq.setText(marqueeText.toString());
 
-                            // Start the marquee effect
+                            marq.setText(marqueeText.toString());
                             marq.setSelected(true);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            Log.e("JSON_ERROR", e.toString());
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Handle errors here
                         error.printStackTrace();
+                        Log.e("API_ERROR", error.toString());
                     }
                 }
         );
+
 
 // Add the request to the request queue (usually done in your activity or fragment)
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this); // `context` is your activity or application context
@@ -179,7 +189,7 @@ bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             startActivity(intent1);
             return true;
         case R.id.news:
-            Intent intent2 = new Intent(getApplicationContext(), ItemList.class);
+            Intent intent2 = new Intent(getApplicationContext(), Web.class);
             intent2.putExtra("url","https://cms-bijontalukders-projects.vercel.app/news");
             startActivity(intent2);
             return true;
