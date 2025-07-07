@@ -51,12 +51,13 @@ import kotlin.jvm.functions.Function1;
 
 public class MainActivity extends AppCompatActivity {
     AdView mAdView;
-//    LinearLayout webview;
+    //    LinearLayout webview;
     LinearLayout layoutone;
-//    ProgressBar progressBar;
+    //    ProgressBar progressBar;
     private InterstitialAd mInterstitialAd;
     ImageView temparature;
-    TextView marq ,dateTime;
+    TextView marq ,dateTime,dateandtime, govtStatus, tempText, weatherCondition, prayerTime, marqueetext;
+    RequestQueue requestQueue;
 //     CardView newslist,educationlist,fireservicelist,doctorlist,bloodlist,hospitallist,policelist,
 //             diagonesticlist,visitedplacelist,emagencynumberlst,resultlist,songotonlist,esebalist,
 //             postcodelist,famouslist,garivaralist,history,secoundlaybtn,Play;
@@ -67,21 +68,23 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewMenu;
     private MenuAdapter menuAdapter;
+    String weatherApiKey = "4c1871e1f93458111a0d7990715fbcd8";
+
     private List<Map<String, Object>> menuItemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        temparature = findViewById(R.id.temparature);
+//        temparature = findViewById(R.id.temparature);
         marq = findViewById(R.id.marqueetext);
 
         dateTime= findViewById(R.id.dateandtime);
 
         layoutone= findViewById(R.id.mainlay);
-
+        tempText = findViewById(R.id.tempText);
         recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
-
+        loadWeather();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, // HTTP method
                 "https://backend-eight-lake-96.vercel.app/api/v1/breaking-news", // URL (replace with your actual endpoint)
@@ -95,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                             StringBuilder marqueeText = new StringBuilder();
 
                             for (int i = 0; i < dataArray.length(); i++) {
-                              JSONObject newsItem = dataArray.getJSONObject(i);
+                                JSONObject newsItem = dataArray.getJSONObject(i);
                                 marq.setSelected(true);  // Make sure this line is called after setting the text
 
                                 // Extract the news title and content (or other fields as needed)
@@ -162,39 +165,49 @@ public class MainActivity extends AppCompatActivity {
         });
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
 
-    Toast.makeText(MainActivity.this, item.getItemId(), Toast.LENGTH_SHORT).show();
-    switch (item.getItemId())
-    {
-
-        case R.id.home:
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            return true;
-        case R.id.spot:
-            Intent intent1 = new Intent(getApplicationContext(), Web.class);
-            intent1.putExtra("url","https://cms-bijontalukders-projects.vercel.app/tourist-spot");
-            startActivity(intent1);
-            return true;
-        case R.id.news:
-            Intent intent2 = new Intent(getApplicationContext(), ItemList.class);
-            intent2.putExtra("url","https://cms-bijontalukders-projects.vercel.app/news");
-            startActivity(intent2);
-            return true;
-        default:
-            return  false;
-    }
-
-//    return  false;
-
-//    switch (item.getItemId()) {
+            Toast.makeText(MainActivity.this, item.getItemId(), Toast.LENGTH_SHORT).show();
+//            switch (item.getItemId())
+//            {
 //
-//        default:
-//            return false;
-//  }
-});
+//                case R.id.home:
+//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                    startActivity(intent);
+//                    return true;
+//                case R.id.spot:
+//                    Intent intent1 = new Intent(getApplicationContext(), Web.class);
+//                    intent1.putExtra("url","https://cms-bijontalukders-projects.vercel.app/tourist-spot");
+//                    startActivity(intent1);
+//                    return true;
+//                case R.id.news:
+//                    Intent intent2 = new Intent(getApplicationContext(), ItemList.class);
+//                    intent2.putExtra("url","https://cms-bijontalukders-projects.vercel.app/news");
+//                    startActivity(intent2);
+//                    return true;
+//                default:
+//                    return  false;
+//            }
+            int id = item.getItemId();
+            if (id == R.id.home) {
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            } else if (id == R.id.spot) {
+                Intent spotIntent = new Intent(this, Web.class);
+                spotIntent.putExtra("url", "https://cms-bijontalukders-projects.vercel.app/tourist-spot");
+                startActivity(spotIntent);
+                return true;
+            } else if (id == R.id.news) {
+                Intent newsIntent = new Intent(this, Web.class);
+                newsIntent.putExtra("url", "https://cms-bijontalukders-projects.vercel.app/news");
+                startActivity(newsIntent);
+                return true;
+            } else {
+                return false;
+            }
+
+        });
 
 
 
@@ -233,13 +246,13 @@ bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
 
 
-        temparature.setOnClickListener(view -> {
+       // temparature.setOnClickListener(view -> {
 //                mInterstitialAd.show(MainActivity.this);
 //            Web.url="https://justweather.org/Bangladesh/Chittagong/Chittagong/Chandanaish/Hourly/";
 //            Intent intent= new Intent(getApplicationContext(), Web.class);
 //            startActivity(intent);
 
-        });
+       // });
 //        resultlist.setOnClickListener(view -> {
 //            Web.url ="http://www.educationboardresults.gov.bd/";
 //            Intent intent= new Intent(getApplicationContext(), Web.class);
@@ -370,6 +383,31 @@ bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 //        });
 
 
+    }
+
+    private void loadWeather() {
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=Dhaka&appid=" + weatherApiKey + "&units=metric";
+
+        JsonObjectRequest weatherRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                response -> {
+                    try {
+                        JSONObject main = response.getJSONObject("main");
+                        JSONArray weatherArr = response.getJSONArray("weather");
+                        JSONObject weather = weatherArr.getJSONObject(0);
+
+                        String temp = main.getString("temp") + "°C";
+                        String condition = weather.getString("main");
+//                      Toast.makeText()
+                        tempText.setText(temp);
+                        weatherCondition.setText(condition);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                },
+                error -> Log.e("WeatherError", error.toString()));
+
+        requestQueue.add
+                (weatherRequest);
     }
     private  void loadFullScreenad(){
         AdRequest adRequest = new AdRequest.Builder().build();

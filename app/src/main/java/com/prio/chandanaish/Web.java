@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 public class Web extends AppCompatActivity {
-//    public  static String url;
+    //    public  static String url;
     WebView webView;
 
     ProgressBar progressBar;

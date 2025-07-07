@@ -41,7 +41,18 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        Object type = menuItems.get(position).get("type");
+//        Object type = menuItems.get(position).get("type");
+//        return "banner".equals(type) ? TYPE_BANNER : TYPE_MENU_ITEM;
+        if (menuItems == null || position < 0 || position >= menuItems.size()) {
+            return TYPE_MENU_ITEM;
+        }
+
+        Map<String, Object> item = menuItems.get(position);
+        if (item == null || !item.containsKey("type")) {
+            return TYPE_MENU_ITEM;
+        }
+
+        Object type = item.get("type");
         return "banner".equals(type) ? TYPE_BANNER : TYPE_MENU_ITEM;
     }
 
@@ -110,10 +121,6 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
             menuHolder.itemView.setOnClickListener(v -> {
-//                Toast.makeText(context, "asdfdf"+ item.get("isClikableLink")+item
-
-
-//                        , Toast.LENGTH_SHORT).show();
                 Toast.makeText(context, id+"debug"+isClickableLink+url, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, isClickableLink ? Web.class : ItemList.class);
                 intent.putExtra("id", id);

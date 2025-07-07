@@ -1,5 +1,4 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,41 +6,191 @@
     android:background="#D3F3F3F3"
     tools:context=".MainActivity">
 
-    <!-- AppBar -->
+    <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/lay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true">
+        android:background="@color/primary_color"
+        android:elevation="4dp">
 
-        <androidx.appcompat.widget.Toolbar
+        <LinearLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Row 1: Title + Notification -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="প্রিয় চন্দনাইশ"
-                android:textColor="#FFFFFF"
-                android:textSize="23sp"/>
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/dateandtime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="প্রিয় চন্দনাইশ"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/temparature"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="end"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/ic_baseline_cloud_24"/>
-        </androidx.appcompat.widget.Toolbar>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/notificationIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:padding="4dp"
+                        android:src="@drawable/admob_close_button_black_circle_white_cross"
+                        android:tint="@android:color/white"
+                        tools:ignore="UseAppTint" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Row 2: Date, Govt Status, Network -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start|center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/dateandtime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="04 July, 11:30 AM"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/govtStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:background="@drawable/gradient"
+                        android:paddingStart="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="4dp"
+                        android:text="Govt Off Day"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/networkStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:paddingStart="4dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="4dp"
+                        android:paddingBottom="2dp"
+                        android:text="4G"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/signalIcon"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:tint="@android:color/white"
+                        tools:ignore="UseAppTint" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Row 3: Weather + Prayer Time -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start|center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/temparature"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/baseline_wb_sunny_24"
+                        android:tint="@android:color/white"
+                        tools:ignore="UseAppTint" />
+
+                    <TextView
+                        android:id="@+id/tempText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/weatherCondition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:text="Sunny"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="6dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginEnd="4dp"
+                        android:tint="@android:color/white"
+                        tools:ignore="UseAppTint" />
+
+                    <TextView
+                        android:id="@+id/prayerTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Maghrib 6:15"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Main Content -->
@@ -62,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- Marquee Text -->
+                <!-- Marquee -->
                 <LinearLayout
                     android:id="@+id/lay2"
                     android:layout_width="match_parent"
@@ -80,7 +229,7 @@
                             android:layout_height="match_parent"
                             android:text="News"
                             android:textColor="@color/white"
-                            android:textSize="15sp"/>
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -92,14 +241,13 @@
                             android:id="@+id/marqueetext"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:singleLine="true"
+                            android:layout_gravity="center"
                             android:ellipsize="marquee"
                             android:fadingEdge="horizontal"
                             android:marqueeRepeatLimit="marquee_forever"
                             android:scrollHorizontally="true"
-
-                            android:text=""
-                        android:layout_gravity="center" />
+                            android:singleLine="true"
+                         />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -107,40 +255,12 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewMenu"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <!-- Image Slider -->
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:id="@+id/slider"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_margin="16dp"-->
-<!--                    app:cardCornerRadius="9dp">-->
-
-<!--                    <com.denzcoskun.imageslider.ImageSlider-->
-<!--                        android:id="@+id/image_slider"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="100dp"-->
-<!--                        app:iss_auto_cycle="true"-->
-<!--                        app:iss_delay="0"-->
-<!--                        app:iss_error_image="@drawable/ic_launcher_background"-->
-<!--                        app:iss_period="1000"-->
-<!--                        app:iss_placeholder="@drawable/ic_launcher_foreground"/>-->
-<!--                </androidx.cardview.widget.CardView>-->
-
-                <!-- AdView -->
-<!--                <com.google.android.gms.ads.AdView-->
-<!--                    android:id="@+id/adView"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginBottom="5dp"-->
-
-<!--                    />-->
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
-    <!-- BottomAppBar -->
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
@@ -148,7 +268,5 @@
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_menu"/>
-    <!-- Floating Action Button -->
-
+        app:menu="@menu/bottom_menu" />
 </RelativeLayout>
