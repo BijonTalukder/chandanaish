@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D3F3F3F3"
+    android:background="@color/background_color"
     tools:context=".MainActivity">
 
     <!-- App Bar -->
@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="প্রিয় চন্দনাইশ"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/white_bar"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -45,6 +45,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:visibility="gone"
                         android:id="@+id/notificationIcon"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
@@ -52,7 +53,7 @@
                         android:background="?android:attr/selectableItemBackgroundBorderless"
                         android:padding="4dp"
                         android:src="@drawable/admob_close_button_black_circle_white_cross"
-                        android:tint="@android:color/white"
+                        android:tint="@color/text_primary"
                         tools:ignore="UseAppTint" />
                 </LinearLayout>
             </LinearLayout>
@@ -74,15 +75,17 @@
 
                     <TextView
                         android:id="@+id/dateandtime"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
                         android:text="04 July, 11:30 AM"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/text_primary"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/govtStatus"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:alpha="0.9"
@@ -92,18 +95,20 @@
                         android:paddingEnd="8dp"
                         android:paddingBottom="4dp"
                         android:text="Govt Off Day"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/text_primary"
                         android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/networkStatus"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
@@ -112,14 +117,14 @@
                         android:paddingEnd="4dp"
                         android:paddingBottom="2dp"
                         android:text="4G"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/text_primary"
                         android:textSize="10sp" />
 
                     <ImageView
                         android:id="@+id/signalIcon"
                         android:layout_width="16dp"
                         android:layout_height="16dp"
-                        android:tint="@android:color/white"
+                        android:tint="@color/text_primary"
                         tools:ignore="UseAppTint" />
                 </LinearLayout>
             </LinearLayout>
@@ -144,7 +149,7 @@
                         android:layout_height="32dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/baseline_wb_sunny_24"
-                        android:tint="@android:color/white"
+                        android:tint="@color/white_bar"
                         tools:ignore="UseAppTint" />
 
                     <TextView
@@ -153,7 +158,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="12dp"
                         android:text=""
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white_bar"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -162,8 +167,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:alpha="0.8"
-                        android:text="Sunny"
-                        android:textColor="@android:color/white"
+                        android:text=""
+                        android:textColor="@color/white_bar"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -172,13 +177,14 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:padding="6dp">
 
                     <ImageView
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_marginEnd="4dp"
-                        android:tint="@android:color/white"
+                        android:tint="@color/text_primary"
                         tools:ignore="UseAppTint" />
 
                     <TextView
@@ -186,7 +192,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Maghrib 6:15"
-                        android:textColor="@android:color/white"
+                        android:visibility="gone"
+                        android:textColor="@color/text_primary"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -221,7 +228,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:background="#DC3535"
+                        android:background="@color/marquee_label_bg"
                         android:padding="5sp">
 
                         <TextView
@@ -247,7 +254,7 @@
                             android:marqueeRepeatLimit="marquee_forever"
                             android:scrollHorizontally="true"
                             android:singleLine="true"
-                         />
+                            android:textColor="@color/black" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -255,6 +262,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewMenu"
                     android:layout_width="match_parent"
+                    android:background="@color/light_grey"
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
@@ -266,7 +274,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
+        android:background="@color/bottom_nav_bg"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_menu" />
 </RelativeLayout>

@@ -1,16 +1,30 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.Chandanaish" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-    </style>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Primary and Secondary Colors (Darker Variants if needed) -->
+    <color name="primary_color">#303F9F</color> <!-- Darker Indigo -->
+    <color name="secondary_color">#F06292</color> <!-- Lighter Pink -->
+
+    <!-- Material Colors (keep as is if UI uses them) -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white_bar">#FFFFFFFF</color>
+
+    <!-- Text Colors for Dark Background -->
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#B0B0B0</color>
+    <color name="secondary_text_color">#B0B0B0</color>
+    <color name="background_color">#EB353434</color>
+
+
+    <!-- Backgrounds and Neutrals -->
+    <color name="light_grey">#EB353434</color>
+    <color name="black">#FFFFFFFF</color> <!-- Flip if needed -->
+    <color name="white">#FF000000</color>
+    <color name="lavender">#B5BFFF</color> <!-- Slightly muted for dark mode -->
+    <color name="bottom_nav_bg">#FF000000</color>
+
 </resources>

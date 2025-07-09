@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Tourist Spot Name"
-            android:textColor="@android:color/black"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -52,7 +52,7 @@
             android:ellipsize="end"
             android:text="A short description of the tourist spot..."
             android:textSize="14sp"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/black" />
 
         <!-- More Details Button -->
         <Button

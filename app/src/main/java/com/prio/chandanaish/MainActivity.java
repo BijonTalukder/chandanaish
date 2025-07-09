@@ -83,7 +83,9 @@ public class MainActivity extends AppCompatActivity {
 
         layoutone= findViewById(R.id.mainlay);
         tempText = findViewById(R.id.tempText);
+        weatherCondition = findViewById(R.id.weatherCondition);
         recyclerViewMenu = findViewById(R.id.recyclerViewMenu);
+        requestQueue = Volley.newRequestQueue(this);
         loadWeather();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, // HTTP method
@@ -124,8 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-// Add the request to the request queue (usually done in your activity or fragment)
-        RequestQueue queue = Volley.newRequestQueue(MainActivity.this); // `context` is your activity or application context
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
         queue.add(jsonObjectRequest);
 
 
@@ -169,26 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             Toast.makeText(MainActivity.this, item.getItemId(), Toast.LENGTH_SHORT).show();
-//            switch (item.getItemId())
-//            {
-//
-//                case R.id.home:
-//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                    startActivity(intent);
-//                    return true;
-//                case R.id.spot:
-//                    Intent intent1 = new Intent(getApplicationContext(), Web.class);
-//                    intent1.putExtra("url","https://cms-bijontalukders-projects.vercel.app/tourist-spot");
-//                    startActivity(intent1);
-//                    return true;
-//                case R.id.news:
-//                    Intent intent2 = new Intent(getApplicationContext(), ItemList.class);
-//                    intent2.putExtra("url","https://cms-bijontalukders-projects.vercel.app/news");
-//                    startActivity(intent2);
-//                    return true;
-//                default:
-//                    return  false;
-//            }
+
             int id = item.getItemId();
             if (id == R.id.home) {
                 startActivity(new Intent(this, MainActivity.class));
@@ -233,155 +215,11 @@ public class MainActivity extends AppCompatActivity {
 
         //ad
         marq.setSelected(true);
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        AdRequest adRequest = new AdRequest.Builder().build();
-//        mAdView.loadAd(adRequest);
-//        loadFullScreenad();
-
-
-
-
-
-       // temparature.setOnClickListener(view -> {
-//                mInterstitialAd.show(MainActivity.this);
-//            Web.url="https://justweather.org/Bangladesh/Chittagong/Chittagong/Chandanaish/Hourly/";
-//            Intent intent= new Intent(getApplicationContext(), Web.class);
-//            startActivity(intent);
-
-       // });
-//        resultlist.setOnClickListener(view -> {
-//            Web.url ="http://www.educationboardresults.gov.bd/";
-//            Intent intent= new Intent(getApplicationContext(), Web.class);
-//            startActivity(intent);
-//        });
-//        newslist.setOnClickListener(new View.OnClickListener() {
+//        MobileAds.initialize(this, new OnInitializationCompleteListener() {
 //            @Override
-//            public void onClick(View view) {
-//                // mInterstitialAd.show(MainActivity.this);
-//                ItemList.role="news";
-//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-//                intent.putExtra("key","news");
-//                startActivity(intent);
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
 //            }
 //        });
-//        educationlist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ItemList.role="education";
-//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-//                intent.putExtra("key","education");
-//                startActivity(intent);
-//
-//            }
-//        });
-//        fireservicelist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ItemList.role="fire";
-//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-//                intent.putExtra("key","fire");
-//                startActivity(intent);
-//
-//            }
-//        });
-//        doctorlist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ItemList.role="doctor";
-//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-//                intent.putExtra("key","doctor");
-//                startActivity(intent);
-//
-//            }
-//        });
-//       bloodlist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ItemList.role="blood";
-//                Intent intent = new Intent(getApplicationContext(), Blood.class);
-//                intent.putExtra("key","blood");
-//                startActivity(intent);
-//
-//            }
-//        });
-//        hospitallist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ItemList.role="hospital";
-//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-//                intent.putExtra("key","hospital");
-//                startActivity(intent);
-//
-//            }
-//        });
-//        policelist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ItemList.role="police";
-//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-//                intent.putExtra("key","police");
-//                startActivity(intent);
-//
-//            }
-//        });
-//        emagencynumberlst.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                 ItemList.role="emargency";
-//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-//                intent.putExtra("key","emargency");
-//                startActivity(intent);
-//
-//            }
-//        });
-//        postcodelist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ItemList.role="postcode";
-//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-//                intent.putExtra("key","postcode");
-//                startActivity(intent);
-//
-//            }
-//        });
-//        visitedplacelist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ItemList.role="visitedplace";
-//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-//                intent.putExtra("key","visitedplace");
-//                startActivity(intent);
-//            }
-//        });
-//        famouslist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ItemList.role="famousman";
-//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-//                intent.putExtra("key","famousman");
-//                startActivity(intent);
-//
-//            }
-//        });
-//        esebalist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ItemList.role="dokan";
-//                Intent intent = new Intent(getApplicationContext(), ItemList.class);
-//                intent.putExtra("key","dokan");
-//                startActivity(intent);
-//
-//            }
-//        });
-//        history.setOnClickListener(view -> {
-//            Intent intent = new Intent(this,itihash.class);
-//            startActivity(intent);
-//        });
-
 
     }
 
@@ -391,12 +229,17 @@ public class MainActivity extends AppCompatActivity {
         JsonObjectRequest weatherRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
                     try {
+                        Log.d("WeatherResponse", response.toString());
                         JSONObject main = response.getJSONObject("main");
+                        Log.d("WeatherResponse", main.toString());
+
                         JSONArray weatherArr = response.getJSONArray("weather");
                         JSONObject weather = weatherArr.getJSONObject(0);
 
                         String temp = main.getString("temp") + "°C";
                         String condition = weather.getString("main");
+                        Log.d("WeatherResponse", condition);
+
 //                      Toast.makeText()
                         tempText.setText(temp);
                         weatherCondition.setText(condition);
@@ -406,64 +249,63 @@ public class MainActivity extends AppCompatActivity {
                 },
                 error -> Log.e("WeatherError", error.toString()));
 
-        requestQueue.add
-                (weatherRequest);
+        requestQueue.add(weatherRequest);
     }
-    private  void loadFullScreenad(){
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
-        InterstitialAd.load(this,"ca-app-pub-3186033098717337/2130752975", adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-                        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
-                            @Override
-                            public void onAdClicked() {
-
-                            }
-
-                            @Override
-                            public void onAdDismissedFullScreenContent() {
-                                // Called when ad is dismissed.
-                                // Set the ad reference to null so you don't show the ad a second time.
-
-                                mInterstitialAd = null;
-                            }
-
-                            @Override
-                            public void onAdFailedToShowFullScreenContent(AdError adError) {
-                                // Called when ad fails to show.
-
-                                mInterstitialAd = null;
-                            }
-
-                            @Override
-                            public void onAdImpression() {
-                                // Called when an impression is recorded for an ad.
-
-                            }
-
-                            @Override
-                            public void onAdShowedFullScreenContent() {
-                                // Called when ad is shown.
-
-                            }
-                        });
-
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
-
-                        mInterstitialAd = null;
-                    }
-                });
-
-    }
+//    private  void loadFullScreenad(){
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
+//
+//        InterstitialAd.load(this,"ca-app-pub-3186033098717337/2130752975", adRequest,
+//                new InterstitialAdLoadCallback() {
+//                    @Override
+//                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+//                        // The mInterstitialAd reference will be null until
+//                        // an ad is loaded.
+//                        mInterstitialAd = interstitialAd;
+//                        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
+//                            @Override
+//                            public void onAdClicked() {
+//
+//                            }
+//
+//                            @Override
+//                            public void onAdDismissedFullScreenContent() {
+//                                // Called when ad is dismissed.
+//                                // Set the ad reference to null so you don't show the ad a second time.
+//
+//                                mInterstitialAd = null;
+//                            }
+//
+//                            @Override
+//                            public void onAdFailedToShowFullScreenContent(AdError adError) {
+//                                // Called when ad fails to show.
+//
+//                                mInterstitialAd = null;
+//                            }
+//
+//                            @Override
+//                            public void onAdImpression() {
+//                                // Called when an impression is recorded for an ad.
+//
+//                            }
+//
+//                            @Override
+//                            public void onAdShowedFullScreenContent() {
+//                                // Called when ad is shown.
+//
+//                            }
+//                        });
+//
+//                    }
+//
+//                    @Override
+//                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+//                        // Handle the error
+//
+//                        mInterstitialAd = null;
+//                    }
+//                });
+//
+//    }
 
 }

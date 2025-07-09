@@ -1,19 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     android:id="@+id/demoimage"
-    android:elevation="6dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
+    android:elevation="6dp"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_background"
+    android:clipToOutline="true"
+    android:maxHeight="200dp"
+    android:padding="5dp">
 
-android:maxHeight="150dp"
-    android:layout_height="match_parent">
     <ImageView
-        android:padding="5px"
-        android:layout_margin="5dp"
         android:id="@+id/demoimageimageview"
-        android:scaleType="fitXY"
         android:layout_width="match_parent"
-        android:layout_height="150dp"/>
-
+        android:layout_height="150dp"
+        android:layout_margin="5dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Newspaper Image"/>
 </LinearLayout>
